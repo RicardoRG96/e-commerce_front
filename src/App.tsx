@@ -1,10 +1,8 @@
-import { useState } from 'react'
+import Home from "./components/common/Home"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <h1>e-commerce</h1>
+    <Home />
   )
 }
 
