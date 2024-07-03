@@ -1,0 +1,25 @@
+.logoContainer {
+    height: 95px;
+    width: 100px;
+}   
+
+.btn {
+    height: 82px;
+    width: 120px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.logoImage {
+    height: 90px;
+    width: 120px;
+}
+
+@media (max-width:600px) {
+    .logoImage {
+        margin-top: 20px;
+        height: 35px;
+        width: 35px;
+    }
+}

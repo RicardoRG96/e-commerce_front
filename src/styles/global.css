@@ -1,0 +1,39 @@
+:root {
+    /* dark colors */
+    --clr-dark-blue: rgba(26, 82, 118, 1);
+    --clr-dark-gray: rgba(56, 56, 56, 1);
+    --clr-dark-black: hsl(240, 16%, 28%);
+    --clr-primary-1: #615EFC;
+    --clr-primary-2: #7E8EF1;
+    --clr-primary-3: #D1D8C5;
+    --clr-primary-4: #EEEEEE;
+    --clr-secondary-1: #222831;
+    --clr-secondary-2: #31363F;
+    --clr-secondary-3: #76ABAE;
+    --clr-secondary-4: #EEEEEE;
+    /* lighter shades of primary color */
+    --clr-light-1: hsl(205, 100%, 57%);
+    --clr-light-2: hsl(205, 90%, 76%);
+    --clr-light-3: hsl(205, 86%, 81%);
+    --clr-light-4: hsl(205, 90%, 88%);
+    --clr-light-5: hsl(205, 100%, 96%);
+    /* other */
+    --transition: all 0.3s;
+    --ff-primary: system-ui;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    padding: 0 22px 0 22px;
+}
+
+@media (max-width:600px) {
+
+    main {
+        padding: 0 5px 0 5px;
+    }
+}

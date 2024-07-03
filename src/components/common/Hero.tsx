@@ -1,10 +1,13 @@
+import IMAGES from "../../images/images";
+import styles from '../../styles/common/Hero.module.css';
+
 const Hero: React.FC = () => {
     return (
-        <div>
-            <div>
-                producto 1
-            </div>
-        </div>
+        <section className={styles.container}>
+            <article>
+                <img src={IMAGES.hero} alt="hero" />
+            </article>
+        </section>
     )
 }
 

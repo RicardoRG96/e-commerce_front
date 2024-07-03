@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0;
+}
+
+.container img {
+    height: 570px;
+    width: 465px;
+    border-radius: 1em;
+}

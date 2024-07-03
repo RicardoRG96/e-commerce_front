@@ -1,0 +1,15 @@
+.nav {
+    height: 4.5em;
+    background-color: var(--clr-primary-1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+@media (max-width:600px) {
+
+    .nav {
+        height: 4em;
+    }
+}
