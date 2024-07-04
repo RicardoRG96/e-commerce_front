@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import Hero from "./Hero";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import CoverProduct from "./CoverProduct";
 import CardProduct from "./CardProduct";
 import styles from '../../styles/common/Home.module.css';
@@ -39,7 +39,6 @@ const Home: React.FC = () => {
 
     return (
         <>
-            <Navbar />
             <main>
                 <Hero />
                 <CoverProduct covers={covers[0].src} />
@@ -48,7 +47,6 @@ const Home: React.FC = () => {
                 </section>
                 <CoverProduct covers={covers[1].src} />
             </main>
-            <Footer />
         </>
     )
 }

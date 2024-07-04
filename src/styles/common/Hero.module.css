@@ -7,6 +7,10 @@
     width: 100%;
 }
 
+.main {
+    overflow-y: hidden;
+}
+
 @media (max-width:600px) {
 
     .container img {

@@ -6,6 +6,17 @@
     align-items: center;
 }
 
+.fixed {
+    top: 0;
+    width: 100%;
+    position: fixed;
+    height: 4.5em;
+    background-color: var(--clr-primary-1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all .5s;
+}
 
 @media (max-width:600px) {
 

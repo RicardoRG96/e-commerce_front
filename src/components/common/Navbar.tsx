@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import Logo from "./Logo";
-import HambugerBtn from "./HamburgerBtn";
+import ProductsBtn from "./ProductsBtn";
 import SearchBar from "./SearchBar";
-// import LocationBtn from "./LocationBtn";
 import SessionInfo from "./SessionInfo";
 import CartButton from "./CartButton";
 import styles from '../../styles/common/Navbar.module.css';
@@ -9,12 +9,11 @@ import styles from '../../styles/common/Navbar.module.css';
 const Navbar: React.FC = () => {
     return (
         <nav className={styles.nav}>
-            <Logo />
-            <HambugerBtn />
-            {/* <LocationBtn /> */}
+            <Link to={'/'}> <Logo /></Link>
+            <Link to={'/products'}><ProductsBtn /></Link>
             <SearchBar />
-            <SessionInfo />
-            <CartButton />            
+            <Link to={'/login'}><SessionInfo /></Link>
+            <Link to={'/cart'}><CartButton /></Link>            
         </nav>
     )
 }

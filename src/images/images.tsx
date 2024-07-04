@@ -6,6 +6,8 @@ const IMAGES = {
     jordan: new URL('./jordan.jpg', import.meta.url).href,
     macbook: new URL('./macbook.png', import.meta.url).href,
     refrigerator: new URL('./refrigerator.jpg', import.meta.url).href,
+    iphone15: new URL('./iphone15.jpg', import.meta.url).href,
+    playstation5: new URL('./playstation5.jpg', import.meta.url).href
 }
 
 export default IMAGES;

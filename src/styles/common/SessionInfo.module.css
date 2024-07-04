@@ -17,7 +17,5 @@
 }
 
 @media (max-width:600px) {
-    .btn span {
-        display: none;
-    }      
+    
 }

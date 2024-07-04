@@ -4,7 +4,7 @@ const SearchBar: React.FC = () => {
     return (
         <div className={styles.container}>
             <form className={styles.form} action="submit">
-                <input type="text" />
+                <input type="text" placeholder='¿Que estás buscando?' />
                 <button>
                     <i 
                         style={

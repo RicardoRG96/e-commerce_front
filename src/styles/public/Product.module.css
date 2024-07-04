@@ -1,0 +1,46 @@
+.section {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: grid;
+    grid-template-columns: 280px 280px 280px;
+    gap: 45px;
+    height: 100%;
+    width: 100%;
+}
+
+.productContainer {
+    height: 520px;
+    width: 319px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    background-color: #fff;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.productContainer img {
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    height: 330px;
+    width: 100%;
+}
+
+.productContainer span {
+    padding: 8px 0 0 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.productContainer .brand {
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.productContainer .price {
+    font-size: 22px;
+}

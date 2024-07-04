@@ -9,8 +9,10 @@ interface Props {
 const CardProduct: React.FC<Props> = ({ products }) => { //acepta props para ser rectangular o cuadrada
     return (
         <>
-            {products.map(product => 
-                <article className={styles.container}>
+            {products.map((product, i) => 
+                <article
+                    key={i} 
+                    className={styles.container}>
                     <img src={product.src} alt="product-image" />
                 </article>
             )}
