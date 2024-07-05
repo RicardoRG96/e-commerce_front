@@ -1,0 +1,13 @@
+.main {
+    display: grid;
+    grid-template-columns: 80px auto auto 80px;
+    grid-template-rows: 20px 800px auto;
+    gap: 15px;
+}
+
+.productsContainer {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}

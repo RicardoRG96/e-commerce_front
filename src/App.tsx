@@ -6,9 +6,10 @@ import Footer from "./components/common/Footer";
 import './styles/global.css'
 import RegisterForm from "./components/public/RegisterForm";
 import Products from "./components/public/Products";
+import ProductLayout from "./components/public/ProductLayout";
 
 
-//añadir rutas de admin, cart, y product (solo un producto)
+//añadir rutas de admin y cart
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<LoginForm />}/>
         <Route path="/register" element={<RegisterForm />}/>
         <Route path="/products" element={<Products />}/>
+        <Route path="/products/:productId" element={<ProductLayout />}/>
       </Routes>
       <Footer />
     </>

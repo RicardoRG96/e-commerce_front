@@ -1,0 +1,102 @@
+.detailsContainer {
+    width: 480px;
+    height: 520px;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: #fff;
+    border-radius: 0.5em;
+    padding: 18px 25px 15px 25px;
+}
+
+.productDetails {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(165, 165, 165);
+}
+
+#brand {
+    margin-bottom: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+#name {
+    margin-bottom: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.description {
+    height: 150px;
+    margin-bottom: 40px;
+    text-align: justify;
+    border-bottom: 1px solid rgb(165, 165, 165);
+    background: none;
+    word-wrap: break-word;
+}
+
+.description p {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.price {
+    height: 50px;
+    margin-bottom: 40px;
+    text-align: justify;
+    border-bottom: 1px solid rgb(165, 165, 165);
+    background: none;
+}
+
+.price span {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 20px;
+}
+
+.btnContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.cartBtn {
+    height: 40px;
+    background: none;
+    font-family: system-ui;
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    border-radius: 1.6em;
+    cursor: pointer;
+    background-color: #615EFC;
+    border: none;
+}
+
+.buyBtn {
+    height: 40px;
+    background: none;
+    border-radius: 1.6em;
+    font-family: system-ui;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    color: #615EFC;
+    border: 1px solid #615EFC;
+    transition: all .5s;
+}
+
+.cartBtn:hover {
+    background-color: #3a36fe;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+.buyBtn:hover {
+    background-color: #615EFC;
+    color: #fff;
+}

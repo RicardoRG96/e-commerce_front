@@ -1,18 +1,7 @@
-.section {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3;
-    display: grid;
-    grid-template-columns: 280px 280px 280px;
-    gap: 45px;
-    height: 100%;
-    width: 100%;
-}
-
 .productContainer {
+    padding: 10px;
     height: 520px;
-    width: 319px;
+    width: 290px;
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -43,4 +32,8 @@
 
 .productContainer .price {
     font-size: 22px;
+}
+
+.link {
+    text-decoration: none;
 }

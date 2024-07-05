@@ -1,35 +1,39 @@
+import { Link } from 'react-router-dom';
 import styles from '../../styles/public/Product.module.css';
-import IMAGES from '../../images/images';
 
-const Product: React.FC = () => {
+interface Props {
+    id: number
+    brand: string
+    productName: string
+    price: number
+    src: string
+}
+
+const Product: React.FC<Props> = ({ id, brand, productName, price, src }) => {
+
     return (
-        <section className={styles.section}>
+        <Link to={`/products/${id}`} className={styles.link} >
             <div className={styles.productContainer}>
-                <img src={IMAGES.iphone15} alt="product-image" />
-                <span className={styles.brand}>Apple</span>
-                <span>iPhone 15 pro</span>
-                <span className={styles.price}>$1.000.000</span>
+                <img src={src} alt="product-image" />
+                <span className={styles.brand}>{brand}</span>
+                <span>{productName}</span>
+                <span className={styles.price}>{`$${price}`}</span>
             </div>
-            <div className={styles.productContainer}>
-                <img src={IMAGES.playstation5} alt="product-image" />
-                <span className={styles.brand}>Sony</span>
-                <span>Playstation 5</span>
-                <span className={styles.price}>600.000</span>
-            </div>
-            <div className={styles.productContainer}>
-                <img src={IMAGES.iphone15} alt="product-image" />
-                <span className={styles.brand}>Apple</span>
-                <span>iPhone 15 pro</span>
-                <span className={styles.price}>$1.000.000</span>
-            </div>
-            <div className={styles.productContainer}>
-                <img src={IMAGES.playstation5} alt="product-image" />
-                <span className={styles.brand}>Sony</span>
-                <span>Playstation 5</span>
-                <span className={styles.price}>600.000</span>
-            </div>   
-        </section>
+        </Link>
     )
 }
+
+// <section className={styles.section}>
+        //     {products.map(product => 
+        //         <Link to={'/product'} className={styles.link} >
+        //             <div className={styles.productContainer}>
+        //                 <img src={product.src} alt="product-image" />
+        //                 <span className={styles.brand}>{product.brand}</span>
+        //                 <span>{product.productName}</span>
+        //                 <span className={styles.price}>{product.price}</span>
+        //             </div>
+        //         </Link>
+        //     )}
+        // </section>
 
 export default Product;
