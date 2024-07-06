@@ -1,0 +1,52 @@
+.container {
+    height: 55px;
+    width: 680px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border-radius: 0.5em;
+    background-color: #fff;
+}
+
+.detailsContainer {
+    height: 25px;
+    width: 187px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detailsTitle {
+    font-family: system-ui;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.productsNumber {
+    font-family: system-ui;
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.deleteBtnContainer {
+    border: none;
+}
+
+.deleteBtnContainer button {
+    font-family: system-ui;
+    font-size: 16px;
+    border: none;
+    background: none;
+    color: hsl(205, 98%, 48%);
+    outline: none;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.deleteBtnContainer button:hover {
+    color: hsl(205, 99%, 34%);
+}

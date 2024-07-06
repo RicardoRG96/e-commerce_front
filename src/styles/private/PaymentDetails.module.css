@@ -1,0 +1,20 @@
+.container {
+    height: 300px;
+    width: 550px;
+    padding: 0 15px 0 15px;
+    background-color: bisque;
+}
+
+.resumeContainer {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #565656;
+    background-color: cadetblue;
+}
+
+.resumeContainer span {
+    font-family: system-ui;
+    font-size: 19px;
+    font-weight: 500;
+}

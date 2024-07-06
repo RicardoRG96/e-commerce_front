@@ -3,13 +3,14 @@ import Home from "./components/common/Home";
 import LoginForm from "./components/public/LoginForm";
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
-import './styles/global.css'
 import RegisterForm from "./components/public/RegisterForm";
 import Products from "./components/public/Products";
 import ProductLayout from "./components/public/ProductLayout";
+import CartLayout from "./components/private/CartLayout";
+import './styles/global.css';
 
 
-//añadir rutas de admin y cart
+//añadir rutas de admin y myAccount
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/register" element={<RegisterForm />}/>
         <Route path="/products" element={<Products />}/>
         <Route path="/products/:productId" element={<ProductLayout />}/>
+        <Route path="/cart" element={<CartLayout />} />
       </Routes>
       <Footer />
     </>
