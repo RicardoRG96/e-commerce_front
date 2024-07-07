@@ -7,7 +7,7 @@ const PaymentDetails: React.FC = () => {
                 <span>Resumen de compra</span>
             </div>
             <div className={styles.priceDetailsContainer}>
-                <span>Costo de tus productos</span>
+                <span>Costo de tus productos: </span>
                 <span>$1.000.000</span>
             </div>
             <div className={styles.payBtnContainer}>

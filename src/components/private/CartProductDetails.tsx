@@ -1,28 +1,31 @@
+import styles from '../../styles/private/CartProductDetails.module.css';
+import IMAGES from '../../images/images';
+
 const CartProductDetails: React.FC = () => {
     return (
-        <article>
-            <div>
-                <div>Smartphone Galaxy S23 128GB</div>
-                <div>$549.990</div>
+        <article className={styles.container}>
+            <div className={styles.productNameContainer}>
+                <span className={styles.productName}>iPhone 15 Pro 128GB</span>
+                <span className={styles.productPrice}>$1.000.990</span>
             </div>
-            <div>
-                <div>
-                    <img src="" alt="product-image" />
+            <div className={styles.productContainer}>
+                <div className={styles.imgContainer}>
+                    <img src={IMAGES.iphone15} alt="product-image" />
                 </div>
-                <div>
+                <div className={styles.quantityContainer}>
                     <span>Cantidad</span>
-                    <div>
-                        <div>
+                    <div className={styles.addToCartContainer}>
+                        <div className={styles.btnContainer}>
                             <button>-</button>
                         </div>
-                        <div>1</div>
-                        <div>
+                        <div className={styles.quantity}>1</div>
+                        <div className={styles.btnContainer}>
                             <button>+</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div>
+            <div className={styles.deleteBtnContainer}>
                 <div>
                     <i className="fa-solid fa-trash"></i>
                     <button>

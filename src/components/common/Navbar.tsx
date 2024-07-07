@@ -21,7 +21,10 @@ const Navbar: React.FC = () => {
             </Link>
             <Link to={'/cart'} className={styles.link}>
                 <CartButton />
-            </Link>            
+            </Link>
+            <Link to={'/myaccount'}>
+                <button>mi cuenta</button>
+            </Link>      
         </nav>
     )
 }

@@ -8,6 +8,8 @@ import Products from "./components/public/Products";
 import ProductLayout from "./components/public/ProductLayout";
 import CartLayout from "./components/private/CartLayout";
 import './styles/global.css';
+import MyAccount from "./components/private/MyAccount";
+import AccountSettings from "./components/private/AccountSettings";
 
 
 //añadir rutas de admin y myAccount
@@ -16,12 +18,14 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/login" element={<LoginForm />}/>
-        <Route path="/register" element={<RegisterForm />}/>
-        <Route path="/products" element={<Products />}/>
-        <Route path="/products/:productId" element={<ProductLayout />}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:productId" element={<ProductLayout />} />
         <Route path="/cart" element={<CartLayout />} />
+        <Route path="/myaccount" element={<MyAccount />} />
+        <Route path="/myaccount/account-settings" element={<AccountSettings />} />
       </Routes>
       <Footer />
     </>

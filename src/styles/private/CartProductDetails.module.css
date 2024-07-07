@@ -1,0 +1,130 @@
+.container {
+    width: 95%;
+    height: 275px;
+    margin-bottom: 15px;
+    padding: 15px 15px 0 15px;
+    border-radius: 0.7em;
+    background-color: #fff;
+}
+
+.productNameContainer {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.productName {
+    font-family: system-ui;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.productPrice {
+    font-family: system-ui;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.productContainer {
+    margin-top: 20px;
+    display: flex;flex-direction: row;
+    gap: 35px;
+}
+
+.imgContainer {
+    height: 145px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #dedede;
+    border-radius: 0.5em;
+}
+
+.imgContainer img {
+    height: 140px;
+    width: 115px;
+}
+
+.quantityContainer {
+    width: 135px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantityContainer span {
+    font-family: system-ui;
+    font-size: 15px;
+}
+
+.addToCartContainer {
+    width: 125px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #bababa;
+    border-radius: 0.5em;
+}
+
+.btnContainer {
+    width: 40px;
+    height: 40px;
+    background: none;
+}
+
+.btnContainer button {
+    height: 100%;
+    width: 100%;
+    font-family: system-ui;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.quantity {
+    height: 39px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui;
+    border-left: 1px solid #bababa;
+    border-right: 1px solid #bababa;
+}
+
+.deleteBtnContainer {
+    height: 30px;
+    margin-top: 22px;
+    display: flex;
+    justify-content: right;
+}
+
+.deleteBtnContainer div {
+    width: 95px;
+    display: flex;
+}
+
+.deleteBtnContainer i {
+    font-size: 25px;
+    color: hsl(205, 100%, 80%);
+}
+
+.deleteBtnContainer button {
+    font-family: system-ui;
+    font-size: 16px;
+    color: hsl(205, 98%, 48%);
+    background: none;
+    border: none;
+    outline: none;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.deleteBtnContainer button:hover {
+    color: hsl(205, 100%, 29%);
+}

@@ -1,0 +1,52 @@
+.section {
+    height: 244px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    border-radius: 0.8em;
+    background-color: #fff;
+}
+
+.optionContainer {
+    height: 55px;
+    border-bottom: 1px solid #dedede;
+    background: none;
+}
+
+.option {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100%;
+}
+
+.option button {
+    height: 100%;
+    width: 100%;
+    padding-left: 35px;
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
+    justify-content: left;
+    align-items: center;
+    font-family: system-ui;
+    font-size: 19px;
+    background:none;
+    border: none;
+    color: #474747;
+    cursor: pointer;
+}
+
+.option button:hover {
+    background-color: #ededed;
+}
+
+.link {
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+}

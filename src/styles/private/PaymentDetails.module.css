@@ -1,20 +1,75 @@
 .container {
-    height: 300px;
+    height: 260px;
     width: 550px;
     padding: 0 15px 0 15px;
-    background-color: bisque;
+    border-radius: 0.6em;
+    background-color: #fff;
 }
 
 .resumeContainer {
-    height: 55px;
+    height: 60px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #565656;
-    background-color: cadetblue;
+    border-bottom: 1px solid #dedede;
 }
 
 .resumeContainer span {
     font-family: system-ui;
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 500;
+}
+
+.priceDetailsContainer {
+    height: 60px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dedede;
+}
+
+.priceDetailsContainer span {
+    font-family: system-ui;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.payBtnContainer {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.payBtnContainer button {
+    height: 45px;
+    width: 100%;
+    font-family: system-ui;
+    font-size: 17px;
+    font-weight: 500;
+    background-color: #615EFC;
+    color: #fff;
+    border-radius: 1.7em;
+    border: none;
+    cursor: pointer;
+}
+
+.safePaymentContainer {
+    height: 55px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.safePaymentContainer span {
+    font-family: system-ui;
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.safePaymentContainer i {
+    margin-right: 12px;
+    font-size: 22px;
+    color: #2f2f2f;
 }
