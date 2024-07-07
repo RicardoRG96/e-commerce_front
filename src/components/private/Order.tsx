@@ -1,5 +1,6 @@
 import styles from '../../styles/private/Order.module.css';
 import IMAGES from '../../images/images';
+import { Link } from 'react-router-dom';
 
 const Order: React.FC = () => {
     return (
@@ -22,7 +23,9 @@ const Order: React.FC = () => {
                 </div>
                 <div className={styles.orderDetailBtnContainer}>
                     <div>
-                        <button>Revisar detalle</button>
+                        <Link to={'/myaccount/orders/details'} className={styles.link}>
+                            <button>Revisar detalle</button>
+                        </Link>
                     </div>
                 </div>
             </div>

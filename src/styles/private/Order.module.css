@@ -108,3 +108,11 @@
 .orderDetailBtnContainer button:hover {
     background-color: #423efc;
 }
+
+.link {
+    height: 48px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    text-decoration: none;
+}

@@ -11,6 +11,7 @@ import './styles/global.css';
 import MyAccount from "./components/private/MyAccount";
 import AccountSettings from "./components/private/AccountSettings";
 import OrdersLayout from "./components/private/OrdersLayout";
+import OrderDetailsLayout from "./components/private/OrderDetailsLayout";
 
 
 //añadir rutas de admin y orderDetails
@@ -28,6 +29,7 @@ function App() {
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/myaccount/account-settings" element={<AccountSettings />} />
         <Route path="/myaccount/orders" element={<OrdersLayout />} />
+        <Route path="/myaccount/orders/details" element={<OrderDetailsLayout />} />
       </Routes>
       <Footer />
     </>
