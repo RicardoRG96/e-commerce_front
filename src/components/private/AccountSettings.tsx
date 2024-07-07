@@ -12,7 +12,7 @@ const AccountSettings: React.FC = () => {
                     <input type="password" />
                     <label>Nueva contraseña</label>
                     <input type="password" />
-                    <button>Guadar</button>
+                    <button>Cambiar contraseña</button>
                 </form>
             </div>
         </section>

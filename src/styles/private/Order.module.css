@@ -1,0 +1,110 @@
+.section {
+    padding: 20px 30px 20px 30px;
+    display: flex;
+    flex-direction: column;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 5;
+    border-radius: 0.7em;
+    background-color: #fff;
+}
+
+.dateContainer {
+    height: 60px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.dateContainer span {
+    font-family: system-ui;
+    font-size: 19px;
+}
+
+.orderContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.detailsContainer {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.orderNumberContainer {
+    height: 105px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    justify-content: center;
+}
+
+.orderNumber {
+    font-family: system-ui;
+    font-size: 17px;
+}
+
+.deliveredDate {
+    font-family: system-ui;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.orderStatusContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    height: 100px;
+}
+
+.orderStatusContainer div {
+    height: 95px;
+    width: 80px;
+    border-radius: 0.2em;
+    border: 1px solid #e3e3e3;
+}
+
+.orderStatusContainer img {
+    height: 90px;
+    width: 75px;
+}
+
+.orderStatusContainer span {
+    font-family: system-ui;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.orderDetailBtnContainer {
+    width: 605px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.orderDetailBtnContainer div {
+    height: 170px;
+    width: 605px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: right;
+    border-left: 1px solid #e3e3e3;
+}
+
+.orderDetailBtnContainer button {
+    height: 48px;
+    width: 52%;
+    border-radius: 1.7em;
+    font-family: system-ui;
+    font-size: 22px;
+    background-color: #615EFC;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.orderDetailBtnContainer button:hover {
+    background-color: #423efc;
+}

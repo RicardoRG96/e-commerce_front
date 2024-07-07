@@ -26,10 +26,12 @@ const AsideMenu: React.FC = () => {
             </div>
             <div className={styles.optionContainer}>
                 <div className={styles.option}>
-                    <button>
-                        <i className="fa-solid fa-bag-shopping"></i>
-                        <span>Mis compras</span>
-                    </button>
+                    <Link to={'/myaccount/orders'} className={styles.link}>
+                        <button>
+                            <i className="fa-solid fa-bag-shopping"></i>
+                            <span>Mis compras</span>
+                        </button>
+                    </Link>
                 </div>
             </div>
             <div className={styles.optionContainer}>

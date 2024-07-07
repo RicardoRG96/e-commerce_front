@@ -1,0 +1,24 @@
+.section {
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border-radius: 0.7em;
+    background-color: #fff
+}
+
+.container {
+    height: 48px;
+    width: 170px;
+    display: flex;
+    align-items: center;
+}
+
+.container span {
+    font-family: system-ui;
+    font-size: 27px;
+    font-weight: 300;
+}

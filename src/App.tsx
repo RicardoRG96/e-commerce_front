@@ -10,9 +10,10 @@ import CartLayout from "./components/private/CartLayout";
 import './styles/global.css';
 import MyAccount from "./components/private/MyAccount";
 import AccountSettings from "./components/private/AccountSettings";
+import OrdersLayout from "./components/private/OrdersLayout";
 
 
-//añadir rutas de admin y myAccount
+//añadir rutas de admin y orderDetails
 function App() {
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
         <Route path="/cart" element={<CartLayout />} />
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/myaccount/account-settings" element={<AccountSettings />} />
+        <Route path="/myaccount/orders" element={<OrdersLayout />} />
       </Routes>
       <Footer />
     </>
