@@ -94,3 +94,23 @@
     text-decoration: underline;
     cursor: pointer;
 }
+
+.loadingContentContainer {
+    height: 500px;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    border-radius: 0.8em;
+    background-color: #fff;
+}
+
+.loadingContentContainer div {
+    font-family: system-ui;
+    font-size: 50px;
+    font-weight: 300;
+}

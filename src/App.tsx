@@ -14,7 +14,7 @@ import OrdersLayout from "./components/private/OrdersLayout";
 import OrderDetailsLayout from "./components/private/OrderDetailsLayout";
 
 
-//añadir rutas de admin y orderDetails
+//añadir rutas de admin
 function App() {
   return (
     <>

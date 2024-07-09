@@ -9,10 +9,26 @@ const IMAGES = {
     iphone15: new URL('./iphone15.jpg', import.meta.url).href,
     playstation5: new URL('./playstation5.jpg', import.meta.url).href,
     xbox: new URL('./xbox.png', import.meta.url).href,
-    macbook2: new URL('./macbook.jpg', import.meta.url).href,
+    macbook2: new URL('./macbook.png', import.meta.url).href,
     paymentOptions: new URL('./payment_options.png', import.meta.url).href,
     avatar: new URL('./avatar.png', import.meta.url).href,
-    trucha: new URL('https://images.macrumors.com/t/OGS-wMpuHXbX6VkpJd6urJH1rEg=/1600x0/article-new/2023/09/iphone-15-pro-gray.jpg',    import.meta.url).href
+    vacuumCleaner: new URL('./aspiradora.jpg', import.meta.url).href,
+    nbaBall: new URL('./balonNBA.jpg', import.meta.url).href,
+    blender: new URL('./batidora.jpg', import.meta.url).href,
+    sportDiver: new URL('./buzo.png', import.meta.url).href,
+    sportJersey: new URL('./camiseta.jpg', import.meta.url).href,
+    footballJersey: new URL('./camisetaChile.png', import.meta.url).href,
+    jacket: new URL('./chaqueta.jpg', import.meta.url).href,
+    notebookDell: new URL('./dellXps13.jpg', import.meta.url).href,
+    galaxyS22: new URL('./galaxys22.jpg', import.meta.url).href,
+    ipad: new URL('./ipad.jpg', import.meta.url).href,
+    smartLights: new URL('./luces.jpg', import.meta.url).href,
+    hoodie: new URL('./poleron.png', import.meta.url).href,
+    fridge: new URL('./refrigerador.png', import.meta.url).href,
+    smartTV: new URL('./smartTVLG.png', import.meta.url).href,
+    sonyEarphones: new URL('./Sony-WH1000XM4.png', import.meta.url).href,
+    adidasSneakers: new URL('./zapatillasAdidas.png', import.meta.url).href,
+    nikeSneakers: new URL('./zapatillasNike.png', import.meta.url).href,
 }
 
 export default IMAGES;

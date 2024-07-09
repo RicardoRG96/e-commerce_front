@@ -16,6 +16,13 @@ const CartLayout: React.FC = () => {
     const [cartProducts, setCartProducts] = useState<CartProductsApiResponse>([]);
     const { data, err } = useFetch(cartProductsEndpoint);
 
+    const totalProdcuts = cartProducts.length;
+    const calculateTotalPrice = (): number => {
+        let totalPrice = 0;
+        cartProducts.forEach(cp => totalPrice += parseFloat(cp.product_price.toString()));
+        return totalPrice;
+    }
+
     useEffect(() => {
         if (data) {
             console.log(data);
@@ -47,7 +54,10 @@ const CartLayout: React.FC = () => {
                 <div className={styles.btnsContainer}>
                     <div className={styles.keepBuyingBtnContainer}>
                         <button 
-                            onClick={() => handleRemoveProducts(false)}
+                            onClick={() => {
+                                handleRemoveProducts(false);
+
+                            }}
                         >
                             Seguir comprando
                         </button>
@@ -89,24 +99,50 @@ const CartLayout: React.FC = () => {
         </section>
     );
 
+    let loadingContent = (
+       <section className={styles.loadingContentContainer}>
+            <div>
+                No tienes productos en el carro.
+            </div>
+       </section>
+    )
+
     return (
         <main className={styles.main}>
             {hasProductsRemove && successModalContent}
             {error && errorModalContent}
-            <CartDetails 
-                onEmptyingTheCart={handleRemoveProducts} 
-                handleError={handleError} 
-            />
-            <section className={styles.productDetailsContainer}>
-                <CartProductDetails
-                    onRemoveProduct={handleRemoveProducts}
-                    handleError={handleError} 
-                />
-            </section>
-            <section className={styles.paymentcontainer}>
-                <PaymentDetails />
-                <PaymentOptions />
-            </section>
+            {!cartProducts.length ? loadingContent :
+                <>
+                    <CartDetails
+                        onUpdateCartProducts={setCartProducts}
+                        totalProducts={totalProdcuts}
+                        onEmptyingTheCart={handleRemoveProducts} 
+                        handleError={handleError} 
+                    />
+                    <section className={styles.productDetailsContainer}>
+                        {cartProducts.map(cp => 
+                            <CartProductDetails
+                                key={cp.cart_id}
+                                currentCartProducts={cartProducts}
+                                cartId={cp.cart_id}
+                                userId={cp.user_id}
+                                productId={cp.product_id}
+                                productName={cp.product_name}
+                                productPrice={cp.product_price}
+                                productQuantity={cp.quantity}
+                                imageSrc={cp.product_image_src}
+                                onRemoveProduct={handleRemoveProducts}
+                                handleError={handleError}
+                                onUpdateCartProducts={setCartProducts}
+                            />
+                        )}
+                    </section>
+                    <section className={styles.paymentcontainer}>
+                        <PaymentDetails totalPrice={() => calculateTotalPrice()} />
+                        <PaymentOptions />
+                    </section>
+                </>
+            }
         </main>
     )
 }

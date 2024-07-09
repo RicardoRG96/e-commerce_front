@@ -1,6 +1,10 @@
 import styles from '../../styles/private/PaymentDetails.module.css';
 
-const PaymentDetails: React.FC = () => {
+interface Props {
+    totalPrice: () => number
+}
+
+const PaymentDetails: React.FC<Props> = ({ totalPrice }) => {
     return (
         <article className={styles.container}>
             <div className={styles.resumeContainer}>
@@ -8,7 +12,7 @@ const PaymentDetails: React.FC = () => {
             </div>
             <div className={styles.priceDetailsContainer}>
                 <span>Costo de tus productos: </span>
-                <span>$1.000.000</span>
+                <span>{`$${totalPrice()}`}</span>
             </div>
             <div className={styles.payBtnContainer}>
                 <button>Continuar con el pago</button>

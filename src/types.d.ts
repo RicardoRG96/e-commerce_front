@@ -19,14 +19,20 @@ export type ProductsApiResponse = Array<{
     created_at: string
     category: string
     sub_category: string
+    image_src: string
+    brand: string
 }>
 
 export type CartProductsApiResponse = Array<{
-    id: number
-    user_id: number
+    cart_id: number
+    product_description: string
     product_id: number
+    product_image_src: string
+    product_name: string
+    product_price: number
     quantity: number
-    created_at: string
+    user_id: number
+    user_name: string
 }>
 
 export type ListOfProducts = Products[];

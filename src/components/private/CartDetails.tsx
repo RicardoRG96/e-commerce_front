@@ -1,13 +1,17 @@
+import { type CartProductsApiResponse } from '../../types';
 import styles from '../../styles/private/CartDetails.module.css';
 
 const API = `http://localhost:3000/api/cart/empty-the-cart`;
 
 interface Props {
+    cartProducts: CartProductsApiResponse
+    onUpdateCartProducts: React.Dispatch<React.SetStateAction<CartProductsApiResponse>>
+    totalProducts: number
     onEmptyingTheCart: (value: boolean) => void
     handleError: (value: boolean) => void
 }
 
-const CartDetails: React.FC<Props> = ( {onEmptyingTheCart, handleError}) => {
+const CartDetails: React.FC<Props> = ({ cartProducts, onUpdateCartProducts, totalProducts, onEmptyingTheCart, handleError }) => {
 
     const handleClick = async () => {
         try {
@@ -18,7 +22,8 @@ const CartDetails: React.FC<Props> = ( {onEmptyingTheCart, handleError}) => {
             };
             const response = await fetch(API, requestOptions);
 
-            if (response.status === 20) {
+            if (response.status === 204) {
+                onUpdateCartProducts([]);
                 onEmptyingTheCart(true);
                 handleError(false);
             }
@@ -39,7 +44,7 @@ const CartDetails: React.FC<Props> = ( {onEmptyingTheCart, handleError}) => {
         <div className={styles.container}>
             <div className={styles.detailsContainer}>
                 <span className={styles.detailsTitle}>Tu carro</span>
-                <span className={styles.productsNumber}>(2 productos)</span>
+                <span className={styles.productsNumber}>({`${totalProducts} productos`})</span>
             </div>
             <div className={styles.deleteBtnContainer}>
                 <button
