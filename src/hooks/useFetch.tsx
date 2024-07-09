@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-// import { type ProductsApiResponse } from "../types";
 
-const useFetchGet = (url: string) => {
-    const [data, setData] = useState([]);
-    const [error, setError] = useState<unknown>(null);
+const useFetch = (url: string) => {
+    const [data, setData] = useState(null);
+    const [err, setErr] = useState<unknown>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -12,14 +11,14 @@ const useFetchGet = (url: string) => {
                 const result = await response.json();
                 setData(result);
             } catch (err: unknown) {
-                setError(err);
+                setErr(err);
             }
         }
 
         fetchData();
     }, [url])
 
-    return { data, error };
+    return { data, err };
 }
 
-export default useFetchGet;
+export default useFetch;

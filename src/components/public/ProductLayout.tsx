@@ -43,13 +43,15 @@ const mockProductsDetails = [
 
 const ProductLayout: React.FC = () => {
     const [isProductAddedToCart, setIsProductAddedToCart] = useState(false);
+    const [error, setError] = useState<boolean>(false);
     const { productId } = useParams();
 
     const currentProduct = mockProductsDetails.find(product => product.id.toString() === productId);
 
     const handleAddToCart = (value: boolean) => setIsProductAddedToCart(value);
-
-    const modalContent = (
+    const handleError = (value: boolean) => setError(value);
+    
+    let successModalContent = (
         <section className={styles.modalOverlay}>
             <div className={styles.modalContainer}>
                 <div className={styles.closeBtnContainer}>
@@ -70,9 +72,42 @@ const ProductLayout: React.FC = () => {
         </section>
     );
 
+    let errorModalContent = (
+        <section className={styles.modalOverlay}>
+            <div className={styles.modalContainer}>
+                <div className={styles.closeBtnContainer}>
+                    <button 
+                        onClick={() => {
+                            handleAddToCart(false);
+                            handleError(false);
+                        }}
+                    >
+                        x
+                    </button>
+                </div>
+                <span>Lo sentimos, ocurrió un error inesperado, por favor, inténtalo nuevamente</span>
+                <div className={styles.btnsContainer}>
+                    <div className={styles.keepBuyingBtnContainer}>
+                        <button 
+                            onClick={() => {
+                                handleAddToCart(false);
+                                handleError(false);
+                            }}
+                            >
+                            Seguir comprando
+                        </button>
+                    </div>
+                    <div className={styles.goToCartBtnContainer}>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+
     return (
         <main className={styles.main}>
-            {isProductAddedToCart && modalContent}
+            {isProductAddedToCart && successModalContent}
+            {error && errorModalContent}
             <ProductImage imageSrc={currentProduct ? currentProduct.src : ''} />
             <ProductDetails 
                 brand={currentProduct ? currentProduct.brand : ''}
@@ -80,6 +115,7 @@ const ProductLayout: React.FC = () => {
                 price={currentProduct ? currentProduct.price : 0}
                 description={currentProduct ? currentProduct.description : ''} 
                 onAddToCart={handleAddToCart}
+                handleError={handleError}
             />
         </main>
     )

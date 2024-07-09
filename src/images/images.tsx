@@ -11,7 +11,8 @@ const IMAGES = {
     xbox: new URL('./xbox.png', import.meta.url).href,
     macbook2: new URL('./macbook.jpg', import.meta.url).href,
     paymentOptions: new URL('./payment_options.png', import.meta.url).href,
-    avatar: new URL('./avatar.png', import.meta.url).href
+    avatar: new URL('./avatar.png', import.meta.url).href,
+    trucha: new URL('https://images.macrumors.com/t/OGS-wMpuHXbX6VkpJd6urJH1rEg=/1600x0/article-new/2023/09/iphone-15-pro-gray.jpg',    import.meta.url).href
 }
 
 export default IMAGES;

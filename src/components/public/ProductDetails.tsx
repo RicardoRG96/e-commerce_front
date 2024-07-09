@@ -1,8 +1,4 @@
-import { useEffect, useState } from 'react';
-import useFetchGet from '../../hooks/useFetchGet';
-import { type ProductsApiResponse } from '../../types';
 import styles from '../../styles/public/ProductDetails.module.css';
-import useFetchPost from '../../hooks/useFetchPost';
 
 interface Props {
     brand: string
@@ -10,12 +6,19 @@ interface Props {
     price: number
     description: string
     onAddToCart: (value: boolean) => void
+    handleError: (value: boolean) => void
 }
 
 const API = `http://localhost:3000/api/cart/add-to-cart`;
 
-const ProductDetails: React.FC<Props> = ({ brand, productName, price, description, onAddToCart }) => {
-    // const [products, setProducts] = useState<ProductsApiResponse>([]);
+const ProductDetails: React.FC<Props> = ({ 
+    brand, 
+    productName, 
+    price, 
+    description, 
+    onAddToCart,
+    handleError 
+}) => {
 
     const handleClick = async () => {
         try {
@@ -25,27 +28,20 @@ const ProductDetails: React.FC<Props> = ({ brand, productName, price, descriptio
                 body: JSON.stringify({ user_id: 5, product_id: 1, quantity: 1 })
             };
             const response = await fetch(API, requestOptions);
-            const result = await response.json();
-            console.log(result);
-            onAddToCart(true)
+
+            if (response.status === 201) {
+                onAddToCart(true);
+                handleError(false);
+            }
+            if (response.status === 400 || response.status === 500) {
+                onAddToCart(false);
+                handleError(true);
+            }
         } catch (err) {
-            console.log(err);
             onAddToCart(false);
+            handleError(true);
         }
-    } 
-
-    // useEffect(() => {
-    //     if (data) {
-    //         // console.log(data)
-    //         setProducts(data);
-    //     }
-    // }, [data]);
-
-    // useEffect(() => {
-    //     if (error) {
-    //         console.log(error)
-    //     }
-    // }, [error]);
+    }
 
     return (
         <article className={styles.detailsContainer}>

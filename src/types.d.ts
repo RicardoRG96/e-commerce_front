@@ -21,7 +21,7 @@ export type ProductsApiResponse = Array<{
     sub_category: string
 }>
 
-export type CartItemApiResponse = Array<{
+export type CartProductsApiResponse = Array<{
     id: number
     user_id: number
     product_id: number

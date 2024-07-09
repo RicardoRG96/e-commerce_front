@@ -1,7 +1,69 @@
 import styles from '../../styles/private/CartProductDetails.module.css';
 import IMAGES from '../../images/images';
 
-const CartProductDetails: React.FC = () => {
+const removeProductEndpoint = `http://localhost:3000/api/cart/remove-product`;
+const addOneProductEndpoint = `http://localhost:3000/api/cart/add-one-to-cart`;
+const subtractOneProductEndpoint = `http://localhost:3000/api/cart/subtract-one-from-cart`;
+
+interface Props {
+    onRemoveProduct: (value: boolean) => void
+    handleError: (value: boolean) => void
+}
+
+const CartProductDetails: React.FC<Props> = ({ onRemoveProduct, handleError }) => {
+
+    const handleProductQuantity = async (endpoint: string) => {
+        try {
+            const requestOptions = {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id: 5, product_id: 1 })
+            };
+            const response = await fetch(endpoint, requestOptions);
+
+            if (response.status === 201) {
+                onRemoveProduct(true);
+                handleError(false);
+            }
+            if (response.status === 400 || 
+                response.status === 500 || 
+                response.status === 404
+            ) {
+                onRemoveProduct(false);
+                handleError(true);
+            }
+        } catch (err) {
+            onRemoveProduct(false);
+            handleError(true);
+        }
+    }
+
+    const handleRemoveProduct = async () => {
+        try {
+            const requestOptions = {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ user_id: 5, product_id: 1 })
+            };
+            const response = await fetch(removeProductEndpoint, requestOptions);
+
+            if (response.status === 204) {
+                onRemoveProduct(true);
+                handleError(false);
+            }
+            if (response.status === 400 || 
+                response.status === 500 || 
+                response.status === 404
+            ) {
+                onRemoveProduct(false);
+                handleError(true);
+            }
+        } catch (err) {
+            onRemoveProduct(false);
+            handleError(true);
+        }
+    }
+
     return (
         <article className={styles.container}>
             <div className={styles.productNameContainer}>
@@ -13,14 +75,22 @@ const CartProductDetails: React.FC = () => {
                     <img src={IMAGES.iphone15} alt="product-image" />
                 </div>
                 <div className={styles.quantityContainer}>
-                    <span>Cantidad</span>
+                    <span>Cantidad</span>   
                     <div className={styles.addToCartContainer}>
                         <div className={styles.btnContainer}>
-                            <button>-</button>
+                            <button
+                                onClick={() => handleProductQuantity(subtractOneProductEndpoint)}
+                            >
+                                -
+                            </button>
                         </div>
                         <div className={styles.quantity}>1</div>
                         <div className={styles.btnContainer}>
-                            <button>+</button>
+                            <button
+                                onClick={() => handleProductQuantity(addOneProductEndpoint)}
+                            >
+                                +
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -28,7 +98,9 @@ const CartProductDetails: React.FC = () => {
             <div className={styles.deleteBtnContainer}>
                 <div>
                     <i className="fa-solid fa-trash"></i>
-                    <button>
+                    <button
+                        onClick={handleRemoveProduct}
+                    >
                         Eliminar
                     </button>
                 </div>
