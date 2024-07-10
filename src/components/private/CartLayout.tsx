@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import useFetch from '../../hooks/useFetch';
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../public/AuthContext";
+import useFetchPrivatePages from "../../hooks/useFetchPrivatePages";
 import { type CartProductsApiResponse } from "../../types";
 import CartDetails from "./CartDetails";
 import CartProductDetails from "./CartProductDetails";
@@ -7,15 +8,14 @@ import PaymentDetails from "./PaymentDetails";
 import PaymentOptions from "./PaymentOptions";
 import styles from '../../styles/private/CartLayout.module.css';
 
-const userId = 5;
-const cartProductsEndpoint = `http://localhost:3000/api/cart/${userId}`;
-
 const CartLayout: React.FC = () => {
     const [hasProductsRemove, setHasProductsRemove] = useState(false);
     const [error, setError] = useState<boolean>(false);
     const [cartProducts, setCartProducts] = useState<CartProductsApiResponse>([]);
     const [purchaseTotalPrice, setPurchaseTotalPrice] = useState(0);
-    const { data, err } = useFetch(cartProductsEndpoint);
+    const { token, userId } = useContext(AuthContext);
+    const cartProductsEndpoint = `http://localhost:3000/api/cart/${userId}`;
+    const { data, err } = useFetchPrivatePages(cartProductsEndpoint, token);
 
     const totalProdcuts = cartProducts.length;
     

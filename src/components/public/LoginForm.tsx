@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from './AuthContext';
 import styles from '../../styles/public/LoginForm.module.css';
 
 const loginEndpoint = 'http://localhost:3000/login';
@@ -10,7 +11,8 @@ const LoginForm: React.FC = () => {
         password: ''
     });
     const [error, setError] = useState(false);
-    const [showSuccessfulLoginMessage, setShowSuccessfulLoginMessage] = useState(true);
+    const [showSuccessfulLoginMessage, setShowSuccessfulLoginMessage] = useState(false);
+    const { setToken, setUserId, setUserName } = useContext(AuthContext);
 
     const handleError = (value: boolean) => setError(value);
     const handleSuccessfulMessage = (value: boolean) => setShowSuccessfulLoginMessage(value);
@@ -29,10 +31,18 @@ const LoginForm: React.FC = () => {
                 body: JSON.stringify({ email: userInputValues.email, password: userInputValues.password })
             };
             const response = await fetch(loginEndpoint, requestOptions);
+            const data = await response.json();
+            const { token, userId, userName } = data
 
-            if (response.status === 201) {
+            if (response.status === 200) {
                 handleSuccessfulMessage(true);
                 handleError(false);
+                localStorage.setItem('token', JSON.stringify(token));
+                setToken(token);
+                localStorage.setItem('userId', JSON.stringify(userId));
+                setUserId(userId);
+                localStorage.setItem('userName', JSON.stringify(userName));
+                setUserName(userName);
             }
             if (response.status === 400 ||
                 response.status === 401 ||
@@ -41,6 +51,12 @@ const LoginForm: React.FC = () => {
             ) {
                 handleSuccessfulMessage(false);
                 handleError(true);
+                localStorage.removeItem('token');
+                setToken(null);
+                localStorage.removeItem('userId');
+                setUserId(null);
+                localStorage.removeItem('userName');
+                setUserName(null);
             }
         } catch (err) {
             handleSuccessfulMessage(false);
@@ -101,11 +117,16 @@ const LoginForm: React.FC = () => {
             {showSuccessfulLoginMessage && successModalContent}
             <article className={styles.container}>
                 <h2>Inicia Sesión para comprar</h2>
-                <form action="submit">
+                <form onSubmit={(evt) => {
+                    evt.preventDefault();
+                    handleSubmitData();
+                }}>
                     <label>Correo electrónico</label>
-                    <input type="email" />
+                    <input value={userInputValues.email} onChange={handleChange} 
+                        type="email" name='email' />
                     <label>Contraseña</label>
-                    <input type="password" />
+                    <input value={userInputValues.password} onChange={handleChange} 
+                        type="password" name='password' />
                     <Link to={'/register'} className={styles.link}>¿No tienes cuenta con nosotros? Registrate</Link>
                     <button>Iniciar sesión</button>
                 </form>

@@ -1,6 +1,7 @@
 import styles from '../../styles/private/CartProductDetails.module.css';
 import IMAGES from '../../images/images';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../public/AuthContext';
 import { type CartProductsApiResponse } from '../../types';
 
 const removeProductEndpoint = `http://localhost:3000/api/cart/remove-product`;
@@ -40,6 +41,7 @@ const CartProductDetails: React.FC<Props> = ({
 }) => {
 
     const [cartProductQuantity, setCartProductQuantity] = useState(productQuantity);
+    const { token } = useContext(AuthContext);
 
     const handleRenderProducts = (): void => {
         const nextState = currentCartProducts.filter(ccp => ccp.cart_id !== cartId);
@@ -50,7 +52,10 @@ const CartProductDetails: React.FC<Props> = ({
         try {
             const requestOptions = {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' +  token 
+                },
                 body: JSON.stringify({ user_id: userId, product_id: productId })
             };
             const response = await fetch(addOneProductEndpoint, requestOptions);
@@ -77,7 +82,10 @@ const CartProductDetails: React.FC<Props> = ({
         try {
             const requestOptions = {
                 method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' +  token 
+                },
                 body: JSON.stringify({ user_id: userId, product_id: productId })
             };
             const response = await fetch(subtractOneProductEndpoint, requestOptions);
@@ -104,7 +112,10 @@ const CartProductDetails: React.FC<Props> = ({
         try {
             const requestOptions = {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' +  token 
+                },
                 body: JSON.stringify({ user_id: userId, product_id: productId })
             };
             const response = await fetch(removeProductEndpoint, requestOptions);

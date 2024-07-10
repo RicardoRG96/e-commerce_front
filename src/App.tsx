@@ -12,12 +12,13 @@ import MyAccount from "./components/private/MyAccount";
 import AccountSettings from "./components/private/AccountSettings";
 import OrdersLayout from "./components/private/OrdersLayout";
 import OrderDetailsLayout from "./components/private/OrderDetailsLayout";
+import { AuthProvider } from "./components/public/AuthContext";
 
 
 //añadir rutas de admin
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -32,7 +33,7 @@ function App() {
         <Route path="/myaccount/orders/details" element={<OrderDetailsLayout />} />
       </Routes>
       <Footer />
-    </>
+    </AuthProvider>
   )
 }
 

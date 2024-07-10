@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { AuthContext } from '../public/AuthContext';
 import { type CartProductsApiResponse } from '../../types';
 import styles from '../../styles/private/CartDetails.module.css';
 
@@ -11,13 +13,17 @@ interface Props {
 }
 
 const CartDetails: React.FC<Props> = ({ onUpdateCartProducts, totalProducts, onEmptyingTheCart, handleError }) => {
+    const { token, userId } = useContext(AuthContext);
 
     const handleClick = async () => {
         try {
             const requestOptions = {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ user_id: 5 })
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' +  token 
+                },
+                body: JSON.stringify({ user_id: userId })
             };
             const response = await fetch(API, requestOptions);
 

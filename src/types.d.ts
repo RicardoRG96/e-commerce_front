@@ -42,3 +42,12 @@ export interface RegisterFormType {
 } 
 
 export type ListOfProducts = Products[];
+
+type UserInfoContext = {
+    token: string
+    setToken: React.Dispatch<React.SetStateAction<string>>
+    userId: string
+    setUserId: React.Dispatch<React.SetStateAction<string>>
+    userName: string
+    setUserName: React.Dispatch<React.SetStateAction<string>>
+}

@@ -1,4 +1,6 @@
+import { AuthContext } from './AuthContext';
 import styles from '../../styles/public/ProductDetails.module.css';
+import { useContext } from 'react';
 
 interface Props {
     productId: number
@@ -11,7 +13,6 @@ interface Props {
 }
 
 const API = `http://localhost:3000/api/cart/add-to-cart`;
-const userId = 5;
 
 const ProductDetails: React.FC<Props> = ({
     productId,
@@ -22,12 +23,16 @@ const ProductDetails: React.FC<Props> = ({
     onAddToCart,
     handleError 
 }) => {
+    const { token, userId } = useContext(AuthContext);
 
     const handleClick = async () => {
         try {
             const requestOptions = {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' +  token
+                },
                 body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 })
             };
             const response = await fetch(API, requestOptions);
@@ -36,7 +41,10 @@ const ProductDetails: React.FC<Props> = ({
                 onAddToCart(true);
                 handleError(false);
             }
-            if (response.status === 400 || response.status === 500) {
+            if (response.status === 400 || 
+                response.status === 500 ||
+                response.status === 401
+            ) {
                 onAddToCart(false);
                 handleError(true);
             }

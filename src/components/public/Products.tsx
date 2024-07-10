@@ -23,7 +23,7 @@ const Products: React.FC = () => {
         if (err) {
             setError(true);
         }
-    });
+    });    
 
     let errorModalContent = (
         <section className={styles.modalOverlay}>
