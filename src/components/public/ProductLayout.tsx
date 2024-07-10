@@ -17,14 +17,12 @@ const ProductLayout: React.FC = () => {
 
     useEffect(() => {
         if (data) {
-            console.log(data);
             setProducts(data);
         }
     }, [data]);
 
     useEffect(() => {
         if (err) {
-            console.log(err);
             setError(true);
         }
     });

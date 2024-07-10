@@ -35,4 +35,10 @@ export type CartProductsApiResponse = Array<{
     user_name: string
 }>
 
+export interface RegisterFormType {
+    name: string
+    email: string
+    password: string
+} 
+
 export type ListOfProducts = Products[];

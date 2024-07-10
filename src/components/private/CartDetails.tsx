@@ -4,14 +4,13 @@ import styles from '../../styles/private/CartDetails.module.css';
 const API = `http://localhost:3000/api/cart/empty-the-cart`;
 
 interface Props {
-    cartProducts: CartProductsApiResponse
     onUpdateCartProducts: React.Dispatch<React.SetStateAction<CartProductsApiResponse>>
     totalProducts: number
     onEmptyingTheCart: (value: boolean) => void
     handleError: (value: boolean) => void
 }
 
-const CartDetails: React.FC<Props> = ({ cartProducts, onUpdateCartProducts, totalProducts, onEmptyingTheCart, handleError }) => {
+const CartDetails: React.FC<Props> = ({ onUpdateCartProducts, totalProducts, onEmptyingTheCart, handleError }) => {
 
     const handleClick = async () => {
         try {

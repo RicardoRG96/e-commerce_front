@@ -58,7 +58,6 @@ const CartProductDetails: React.FC<Props> = ({
             if (response.status === 201) {
                 handleError(false);
                 setCartProductQuantity(cartProductQuantity + 1);
-                console.log(totalPrice, productPrice)
                 handleTotalPrice(totalPrice += parseFloat(productPrice.toString()));
             }
             if (response.status === 400 || 
