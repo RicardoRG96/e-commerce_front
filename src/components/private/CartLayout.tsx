@@ -14,28 +14,34 @@ const CartLayout: React.FC = () => {
     const [hasProductsRemove, setHasProductsRemove] = useState(false);
     const [error, setError] = useState<boolean>(false);
     const [cartProducts, setCartProducts] = useState<CartProductsApiResponse>([]);
+    const [purchaseTotalPrice, setPurchaseTotalPrice] = useState(0);
     const { data, err } = useFetch(cartProductsEndpoint);
 
     const totalProdcuts = cartProducts.length;
-    const calculateTotalPrice = (): number => {
-        let totalPrice = 0;
-        cartProducts.forEach(cp => totalPrice += parseFloat(cp.product_price.toString()));
-        return totalPrice;
+    
+    const calculateTotalPrice = (): void => {
+        let totalPrice = 0;        
+        cartProducts.forEach(cp => totalPrice += parseFloat(cp.product_price.toString()) * cp.quantity);
+        setPurchaseTotalPrice(totalPrice);
     }
-
+    
     useEffect(() => {
         if (data) {
-            console.log(data);
-            setCartProducts(data)
+            setCartProducts(data);
         }
     }, [data]);
 
     useEffect(() => {
         if (err) {
-            console.log(err);
             setError(true);
         }
     }, [err]);
+
+    useEffect(() => {
+        if (cartProducts.length) {
+            calculateTotalPrice();
+        }
+    }, [cartProducts])
 
     const handleRemoveProducts = (value: boolean) => setHasProductsRemove(value);
     const handleError = (value: boolean) => setError(value);
@@ -131,6 +137,8 @@ const CartLayout: React.FC = () => {
                                 productPrice={cp.product_price}
                                 productQuantity={cp.quantity}
                                 imageSrc={cp.product_image_src}
+                                totalPrice={purchaseTotalPrice}
+                                handleTotalPrice={setPurchaseTotalPrice}
                                 onRemoveProduct={handleRemoveProducts}
                                 handleError={handleError}
                                 onUpdateCartProducts={setCartProducts}
@@ -138,7 +146,7 @@ const CartLayout: React.FC = () => {
                         )}
                     </section>
                     <section className={styles.paymentcontainer}>
-                        <PaymentDetails totalPrice={() => calculateTotalPrice()} />
+                        <PaymentDetails totalPrice={purchaseTotalPrice} />
                         <PaymentOptions />
                     </section>
                 </>

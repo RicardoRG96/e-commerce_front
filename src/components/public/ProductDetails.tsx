@@ -1,6 +1,7 @@
 import styles from '../../styles/public/ProductDetails.module.css';
 
 interface Props {
+    productId: number
     brand: string
     productName: string
     price: number
@@ -10,8 +11,10 @@ interface Props {
 }
 
 const API = `http://localhost:3000/api/cart/add-to-cart`;
+const userId = 5;
 
-const ProductDetails: React.FC<Props> = ({ 
+const ProductDetails: React.FC<Props> = ({
+    productId,
     brand, 
     productName, 
     price, 
@@ -25,7 +28,7 @@ const ProductDetails: React.FC<Props> = ({
             const requestOptions = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ user_id: 5, product_id: 1, quantity: 1 })
+                body: JSON.stringify({ user_id: userId, product_id: productId, quantity: 1 })
             };
             const response = await fetch(API, requestOptions);
 
@@ -42,7 +45,7 @@ const ProductDetails: React.FC<Props> = ({
             handleError(true);
         }
     }
-
+    
     return (
         <article className={styles.detailsContainer}>
             <div className={styles.productDetails}>

@@ -5,44 +5,11 @@ import FiltersTable from './FiltersTable';
 import OrderByBtn from './OrderByBtn';
 import Product from './Product';
 import useFetch from "../../hooks/useFetch";
-import IMAGES from '../../images/images';
-
-const mockProductsDetails = [
-    {
-        id: 1,
-        brand: 'Apple',
-        productName: 'iPhone 15 pro',
-        price: 1000000,
-        src: IMAGES.iphone15
-    },
-    {
-        id: 2,
-        brand: 'Sony',
-        productName: 'Playstation',
-        price: 600000,
-        src: IMAGES.playstation5
-    },
-    {
-        id:3,
-        brand: 'Microsoft',
-        productName: 'Xbox Series S',
-        price: 600000,
-        src: IMAGES.xbox
-    },
-    {   
-        id: 4,
-        brand: 'Apple',
-        productName: 'Macbook',
-        price: 1200000,
-        src: IMAGES.macbook2
-    }
-]
 
 const productsDataEndpoint = `http://localhost:3000/api/products/`;
 
 const Products: React.FC = () => {
     const [products, setProducts] = useState<ProductsApiResponse>([]);
-    const [productDetails] = useState(mockProductsDetails);
     const [error, setError] = useState<boolean>(false);
     const { data, err } = useFetch(productsDataEndpoint);
 

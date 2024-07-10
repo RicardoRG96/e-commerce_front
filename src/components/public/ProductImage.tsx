@@ -8,7 +8,7 @@ interface Props {
 const ProductImage: React.FC<Props> = ({ imageSrc }) => {
     return (
         <article className={styles.container}>
-            <img src={imageSrc} alt="product-image" />
+            <img src={IMAGES[imageSrc as keyof typeof IMAGES]} alt="product-image" />
         </article>
     )
 }

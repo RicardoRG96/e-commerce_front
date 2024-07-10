@@ -16,6 +16,8 @@ interface Props {
     productPrice: number
     productQuantity: number
     imageSrc: string
+    totalPrice: number
+    handleTotalPrice: React.Dispatch<React.SetStateAction<number>>
     onRemoveProduct: (value: boolean) => void
     handleError: (value: boolean) => void
     onUpdateCartProducts: React.Dispatch<React.SetStateAction<CartProductsApiResponse>>
@@ -30,6 +32,8 @@ const CartProductDetails: React.FC<Props> = ({
     productPrice, 
     productQuantity, 
     imageSrc, 
+    totalPrice,
+    handleTotalPrice,
     onRemoveProduct, 
     handleError,
     onUpdateCartProducts
@@ -53,7 +57,9 @@ const CartProductDetails: React.FC<Props> = ({
 
             if (response.status === 201) {
                 handleError(false);
-                setCartProductQuantity(cartProductQuantity + 1)
+                setCartProductQuantity(cartProductQuantity + 1);
+                console.log(totalPrice, productPrice)
+                handleTotalPrice(totalPrice += parseFloat(productPrice.toString()));
             }
             if (response.status === 400 || 
                 response.status === 500 || 
@@ -79,7 +85,8 @@ const CartProductDetails: React.FC<Props> = ({
 
             if (response.status === 201) {
                 handleError(false);
-                setCartProductQuantity(cartProductQuantity - 1)
+                setCartProductQuantity(cartProductQuantity - 1);
+                handleTotalPrice(totalPrice -= productPrice);
             }
             if (response.status === 400 || 
                 response.status === 500 || 
@@ -107,6 +114,7 @@ const CartProductDetails: React.FC<Props> = ({
                 onRemoveProduct(true);
                 handleRenderProducts();
                 handleError(false);
+                handleTotalPrice(totalPrice -= productPrice)
             }
             if (response.status === 400 || 
                 response.status === 500 || 
@@ -148,7 +156,9 @@ const CartProductDetails: React.FC<Props> = ({
                         <div className={styles.quantity}>{cartProductQuantity}</div>
                         <div className={styles.btnContainer}>
                             <button
-                                onClick={() => handleIncreaseProductQuantity()}
+                                onClick={() => {
+                                    handleIncreaseProductQuantity()
+                                }}
                             >
                                 +
                             </button>

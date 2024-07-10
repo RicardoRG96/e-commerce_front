@@ -1,7 +1,7 @@
 import styles from '../../styles/private/PaymentDetails.module.css';
 
 interface Props {
-    totalPrice: () => number
+    totalPrice: number
 }
 
 const PaymentDetails: React.FC<Props> = ({ totalPrice }) => {
@@ -12,7 +12,7 @@ const PaymentDetails: React.FC<Props> = ({ totalPrice }) => {
             </div>
             <div className={styles.priceDetailsContainer}>
                 <span>Costo de tus productos: </span>
-                <span>{`$${totalPrice()}`}</span>
+                <span>{`$${totalPrice.toFixed(2)}`}</span>
             </div>
             <div className={styles.payBtnContainer}>
                 <button>Continuar con el pago</button>

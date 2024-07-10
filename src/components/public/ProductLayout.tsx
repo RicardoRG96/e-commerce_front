@@ -1,52 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { type ProductsApiResponse } from "../../types";
 import ProductDetails from "./ProductDetails";
 import ProductImage from "./ProductImage";
 import styles from '../../styles/public/ProductLayout.module.css';
-import IMAGES from "../../images/images";
-import { useParams, Link } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
 
-const mockProductsDetails = [
-    {
-        id: 1,
-        brand: 'Apple',
-        productName: 'iPhone 15 pro',
-        price: 1000000,
-        src: IMAGES.iphone15,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in'
-    },
-    {
-        id: 2,
-        brand: 'Sony',
-        productName: 'Playstation 5',
-        price: 600000,
-        src: IMAGES.playstation5,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in'
-    },
-    {
-        id:3,
-        brand: 'Microsoft',
-        productName: 'Xbox Series S',
-        price: 600000,
-        src: IMAGES.xbox,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in'
-    },
-    {   
-        id: 4,
-        brand: 'Apple',
-        productName: 'Macbook',
-        price: 1200000,
-        src: IMAGES.macbook2,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in'
-    }
-]
-
+const productsDataEndpoint = `http://localhost:3000/api/products/`;
 
 const ProductLayout: React.FC = () => {
+    const [products, setProducts] = useState<ProductsApiResponse>([]);
     const [isProductAddedToCart, setIsProductAddedToCart] = useState(false);
     const [error, setError] = useState<boolean>(false);
+    const { data, err } = useFetch(productsDataEndpoint);
     const { productId } = useParams();
 
-    const currentProduct = mockProductsDetails.find(product => product.id.toString() === productId);
+    useEffect(() => {
+        if (data) {
+            console.log(data);
+            setProducts(data);
+        }
+    }, [data]);
+
+    useEffect(() => {
+        if (err) {
+            console.log(err);
+            setError(true);
+        }
+    });
+
+    const currentProduct = products.find(product => product.id.toString() === productId);
 
     const handleAddToCart = (value: boolean) => setIsProductAddedToCart(value);
     const handleError = (value: boolean) => setError(value);
@@ -104,19 +87,32 @@ const ProductLayout: React.FC = () => {
         </section>
     );
 
+    let loadingContent = (
+        <section className={styles.loadingContentContainer}>
+                <div>
+                    Cargando...
+                </div>
+        </section>
+    )
+
     return (
         <main className={styles.main}>
             {isProductAddedToCart && successModalContent}
             {error && errorModalContent}
-            <ProductImage imageSrc={currentProduct ? currentProduct.src : ''} />
-            <ProductDetails 
-                brand={currentProduct ? currentProduct.brand : ''}
-                productName={currentProduct ? currentProduct.productName : ''}
-                price={currentProduct ? currentProduct.price : 0}
-                description={currentProduct ? currentProduct.description : ''} 
-                onAddToCart={handleAddToCart}
-                handleError={handleError}
-            />
+            {!products.length ? loadingContent :
+                <>
+                    <ProductImage imageSrc={currentProduct ? currentProduct.image_src : ''} />
+                    <ProductDetails
+                        productId={currentProduct ? currentProduct.id : 0}
+                        brand={currentProduct ? currentProduct.brand : ''}
+                        productName={currentProduct ? currentProduct.name : ''}
+                        price={currentProduct ? currentProduct.price : 0}
+                        description={currentProduct ? currentProduct.description : ''} 
+                        onAddToCart={handleAddToCart}
+                        handleError={handleError}
+                    />
+                </>
+            }
         </main>
     )
 }
