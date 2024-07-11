@@ -13,6 +13,7 @@ const LoginForm: React.FC = () => {
     const [error, setError] = useState(false);
     const [showSuccessfulLoginMessage, setShowSuccessfulLoginMessage] = useState(false);
     const { setToken, setUserId, setUserName } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleError = (value: boolean) => setError(value);
     const handleSuccessfulMessage = (value: boolean) => setShowSuccessfulLoginMessage(value);
@@ -43,6 +44,7 @@ const LoginForm: React.FC = () => {
                 setUserId(userId);
                 localStorage.setItem('userName', JSON.stringify(userName));
                 setUserName(userName);
+                navigate('/', { replace: true });
             }
             if (response.status === 400 ||
                 response.status === 401 ||
@@ -56,7 +58,7 @@ const LoginForm: React.FC = () => {
                 localStorage.removeItem('userId');
                 setUserId(null);
                 localStorage.removeItem('userName');
-                setUserName(null);
+                setUserName('Inicia sesión o regístrate');
             }
         } catch (err) {
             handleSuccessfulMessage(false);

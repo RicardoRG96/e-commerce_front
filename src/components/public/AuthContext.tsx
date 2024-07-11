@@ -9,12 +9,12 @@ interface Props {
 export const AuthProvider: React.FC<Props> = ({ children }) => {
     const [token, setToken] = useState<string>('');
     const [userId, setUserId] = useState<string>('');
-    const [userName, setUserName] = useState<string>('');
+    const [userName, setUserName] = useState<string>('Inicia sesión o regístrate');
 
     useEffect(() => {
-        const storedToken = localStorage.getItem('token') as string;
-        const storedUserId = localStorage.getItem('userId') as string;
-        const storedUserName = localStorage.getItem('userName') as string;
+        const storedToken = JSON.parse(localStorage.getItem('token') as string);
+        const storedUserId = JSON.parse(localStorage.getItem('userId') as string);
+        const storedUserName = JSON.parse(localStorage.getItem('userName') as string);
         setToken(storedToken);
         setUserId(storedUserId);
         setUserName(storedUserName);

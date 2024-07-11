@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RegisterFormType } from "../../types";
 import styles from '../../styles/public/RegisterForm.module.css';
 
@@ -13,6 +13,7 @@ const RegisterForm: React.FC = () => {
     });
     const [error, setError] = useState(false);
     const [showSuccessfulRegisterMessage, setShowSuccessfulRegisterMessage] = useState(false);
+    const navigate = useNavigate();
 
     const handleError = (value: boolean) => setError(value);
     const handleSuccessfulMessage = (value: boolean) => setShowSuccessfulRegisterMessage(value);
@@ -35,6 +36,12 @@ const RegisterForm: React.FC = () => {
             if (response.status === 201) {
                 handleSuccessfulMessage(true);
                 handleError(false);
+                setUserInputValues({
+                    name: '',
+                    email: '',
+                    password: ''
+                });
+                navigate('/login', { replace: true });
             }
             if (response.status === 400 || 
                 response.status === 500 || 

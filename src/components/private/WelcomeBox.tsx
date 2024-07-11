@@ -1,7 +1,11 @@
+import { useContext } from 'react';
+import { AuthContext } from '../public/AuthContext';
 import styles from '../../styles/private/WelcomeBox.module.css';
 import IMAGES from '../../images/images';
 
 const WelcomeBox: React.FC = () => {
+    const { userName } = useContext(AuthContext);
+
     return (
         <section className={styles.section}>
             <div className={styles.container}>
@@ -10,7 +14,7 @@ const WelcomeBox: React.FC = () => {
                 </div>
                 <div className={styles.userNameContainer}>
                     <span className={styles.helloSpan}>Hola</span>
-                    <span className={styles.userName}>Ricardo Retamal</span>
+                    <span className={styles.userName}>{userName}</span>
                 </div>
             </div>
         </section>

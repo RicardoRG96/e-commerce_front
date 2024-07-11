@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 const useFetchPrivatePages = (url: string, token: any) => {
     const [data, setData] = useState(null);
     const [err, setErr] = useState<unknown>(null);
+    const [deniedAccess, setDeniedAccess] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -16,17 +17,24 @@ const useFetchPrivatePages = (url: string, token: any) => {
                 }
 
                 const response = await fetch(url, requestOptions);
-                const result = await response.json();
-                setData(result);
+                if (response.status === 200) {
+                    const result = await response.json();
+                    setData(result);
+                    setDeniedAccess(false);
+                }
+                if (response.status === 401 || response.status === 403) {
+                    setDeniedAccess(true);
+                }
             } catch (err: unknown) {
                 setErr(err);
+                console.log(err); 
             }
         }
 
         fetchData();
     }, [url])
 
-    return { data, err };
+    return { data, err, deniedAccess };
 }
 
 export default useFetchPrivatePages;

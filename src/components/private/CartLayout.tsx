@@ -7,6 +7,7 @@ import CartProductDetails from "./CartProductDetails";
 import PaymentDetails from "./PaymentDetails";
 import PaymentOptions from "./PaymentOptions";
 import styles from '../../styles/private/CartLayout.module.css';
+import { Link } from "react-router-dom";
 
 const CartLayout: React.FC = () => {
     const [hasProductsRemove, setHasProductsRemove] = useState(false);
@@ -15,7 +16,7 @@ const CartLayout: React.FC = () => {
     const [purchaseTotalPrice, setPurchaseTotalPrice] = useState(0);
     const { token, userId } = useContext(AuthContext);
     const cartProductsEndpoint = `http://localhost:3000/api/cart/${userId}`;
-    const { data, err } = useFetchPrivatePages(cartProductsEndpoint, token);
+    const { data, err, deniedAccess } = useFetchPrivatePages(cartProductsEndpoint, token);
 
     const totalProdcuts = cartProducts.length;
     
@@ -41,7 +42,7 @@ const CartLayout: React.FC = () => {
         if (cartProducts.length) {
             calculateTotalPrice();
         }
-    }, [cartProducts])
+    }, [cartProducts]);
 
     const handleRemoveProducts = (value: boolean) => setHasProductsRemove(value);
     const handleError = (value: boolean) => setError(value);
@@ -105,6 +106,30 @@ const CartLayout: React.FC = () => {
         </section>
     );
 
+    let modalNotLoginErrorMessage = (
+        <section className={styles.modalOverlay}>
+            <div className={styles.modalContainer}>
+                <span>Debes iniciar sesión para acceder a esta página</span>
+                <div className={styles.btnsContainer}>
+                    <div className={styles.tryAgainBtnContainer}>
+                        <Link to={'/login'}>
+                            <button 
+                                onClick={() => {
+                                    handleRemoveProducts(false);
+                                    handleError(false);
+                                }}
+                                >
+                                Ir a iniciar sesión
+                            </button>
+                        </Link>
+                    </div>
+                    <div className={styles.goToCartBtnContainer}>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+
     let loadingContent = (
        <section className={styles.loadingContentContainer}>
             <div>
@@ -117,6 +142,7 @@ const CartLayout: React.FC = () => {
         <main className={styles.main}>
             {hasProductsRemove && successModalContent}
             {error && errorModalContent}
+            {deniedAccess && modalNotLoginErrorMessage}
             {!cartProducts.length ? loadingContent :
                 <>
                     <CartDetails

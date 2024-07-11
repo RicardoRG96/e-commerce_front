@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { AuthContext } from './AuthContext';
 import { type ProductsApiResponse } from "../../types";
 import styles from '../../styles/public/Products.module.css';
 import FiltersTable from './FiltersTable';
@@ -12,6 +13,7 @@ const Products: React.FC = () => {
     const [products, setProducts] = useState<ProductsApiResponse>([]);
     const [error, setError] = useState<boolean>(false);
     const { data, err } = useFetch(productsDataEndpoint);
+    const { userId, userName, token } = useContext(AuthContext);
 
     useEffect(() => {
         if (data) {
@@ -50,6 +52,8 @@ const Products: React.FC = () => {
         </section>
     )
 
+    console.log(userName, localStorage.getItem('userName'));
+    
     return (
         <main className={styles.main}>
             {error && errorModalContent}

@@ -41,6 +41,7 @@ const CartProductDetails: React.FC<Props> = ({
 }) => {
 
     const [cartProductQuantity, setCartProductQuantity] = useState(productQuantity);
+    const [isLoading, setIsLoading] = useState(true);
     const { token } = useContext(AuthContext);
 
     const handleRenderProducts = (): void => {
@@ -64,6 +65,7 @@ const CartProductDetails: React.FC<Props> = ({
                 handleError(false);
                 setCartProductQuantity(cartProductQuantity + 1);
                 handleTotalPrice(totalPrice += parseFloat(productPrice.toString()));
+                setIsLoading(false);
             }
             if (response.status === 400 || 
                 response.status === 500 || 
@@ -94,6 +96,7 @@ const CartProductDetails: React.FC<Props> = ({
                 handleError(false);
                 setCartProductQuantity(cartProductQuantity - 1);
                 handleTotalPrice(totalPrice -= productPrice);
+                setIsLoading(false);
             }
             if (response.status === 400 || 
                 response.status === 500 || 
@@ -139,54 +142,67 @@ const CartProductDetails: React.FC<Props> = ({
         }
     }
 
-    return (
-        <article className={styles.container}>
-            <div className={styles.productNameContainer}>
-                <span className={styles.productName}>{productName}</span>
-                <span className={styles.productPrice}>{productPrice}</span>
+    let loadingContent = (
+        <section className={styles.modalOverlay}>
+            <div className={styles.modalContainer}>
+                <span>Debes iniciar sesión para acceder a esta página</span>
             </div>
-            <div className={styles.productContainer}>
-                <div className={styles.imgContainer}>
-                    <img src={IMAGES[imageSrc as keyof typeof IMAGES]} alt="product-image" />
+        </section>
+    )
+
+    return (
+        <>  
+            {isLoading && loadingContent}
+            <article className={styles.container}>
+                <div className={styles.productNameContainer}>
+                    <span className={styles.productName}>{productName}</span>
+                    <span className={styles.productPrice}>{productPrice}</span>
                 </div>
-                <div className={styles.quantityContainer}>
-                    <span>Cantidad</span>   
-                    <div className={styles.addToCartContainer}>
-                        <div className={styles.btnContainer}>
-                            <button
-                                onClick={() => {
-                                    cartProductQuantity > 1
-                                        ? handleDecreaseProductQuantity()
-                                        : handleRemoveProduct()
-                                }}
-                            >
-                                -
-                            </button>
-                        </div>
-                        <div className={styles.quantity}>{cartProductQuantity}</div>
-                        <div className={styles.btnContainer}>
-                            <button
-                                onClick={() => {
-                                    handleIncreaseProductQuantity()
-                                }}
-                            >
-                                +
-                            </button>
+                <div className={styles.productContainer}>
+                    <div className={styles.imgContainer}>
+                        <img src={IMAGES[imageSrc as keyof typeof IMAGES]} alt="product-image" />
+                    </div>
+                    <div className={styles.quantityContainer}>
+                        <span>Cantidad</span>   
+                        <div className={styles.addToCartContainer}>
+                            <div className={styles.btnContainer}>
+                                <button
+                                    onClick={() => {
+                                        setIsLoading(true);
+                                        cartProductQuantity > 1
+                                            ? handleDecreaseProductQuantity()
+                                            : handleRemoveProduct()
+                                    }}
+                                >
+                                    -
+                                </button>
+                            </div>
+                            <div className={styles.quantity}>{cartProductQuantity}</div>
+                            <div className={styles.btnContainer}>
+                                <button
+                                    onClick={() => {
+                                        setIsLoading(true);
+                                        handleIncreaseProductQuantity()
+                                    }}
+                                >
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className={styles.deleteBtnContainer}>
-                <div>
-                    <i className="fa-solid fa-trash"></i>
-                    <button
-                        onClick={handleRemoveProduct}
-                    >
-                        Eliminar
-                    </button>
+                <div className={styles.deleteBtnContainer}>
+                    <div>
+                        <i className="fa-solid fa-trash"></i>
+                        <button
+                            onClick={handleRemoveProduct}
+                        >
+                            Eliminar
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </article>
+            </article>
+        </>
     )
 }
 
