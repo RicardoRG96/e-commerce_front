@@ -43,6 +43,23 @@ export interface RegisterFormType {
 
 export type ListOfProducts = Products[];
 
+export type UserDataApiResponse = Array<{
+    id: number
+    name: string
+    email: string
+    password: string
+    created_at:string
+}>
+
+export type OrdersHistoryApiResponse = Array<{
+    id: number
+    user_id: number
+    total: number
+    status: string
+    created_at: string
+    delivery_date: string
+}>
+
 type UserInfoContext = {
     token: string
     setToken: React.Dispatch<React.SetStateAction<string>>

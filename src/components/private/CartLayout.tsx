@@ -14,7 +14,7 @@ const CartLayout: React.FC = () => {
     const [error, setError] = useState<boolean>(false);
     const [cartProducts, setCartProducts] = useState<CartProductsApiResponse>([]);
     const [purchaseTotalPrice, setPurchaseTotalPrice] = useState(0);
-    const { token, userId } = useContext(AuthContext);
+    const { token, userId, setToken, setUserId, setUserName } = useContext(AuthContext);
     const cartProductsEndpoint = `http://localhost:3000/api/cart/${userId}`;
     const { data, err, deniedAccess } = useFetchPrivatePages(cartProductsEndpoint, token);
 
@@ -37,6 +37,17 @@ const CartLayout: React.FC = () => {
             setError(true);
         }
     }, [err]);
+
+    useEffect(() => {
+        if (deniedAccess) {
+            localStorage.setItem('userName', 'Inicia sesión o regístrate');
+            setUserName('Inicia sesión o regístrate');
+            localStorage.removeItem('token');
+            setToken(null);
+            localStorage.removeItem('userId');
+            setUserId(null);
+        }
+    }, [deniedAccess]);
 
     useEffect(() => {
         if (cartProducts.length) {

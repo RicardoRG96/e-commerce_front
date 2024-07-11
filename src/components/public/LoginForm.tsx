@@ -24,6 +24,15 @@ const LoginForm: React.FC = () => {
         });
     }
 
+    const handleNavigation = () => {
+        if (!error) {
+            setTimeout(() => {
+                navigate('/', { replace: true });
+            });
+        }
+
+    }
+
     const handleSubmitData = async () => {
         try {
             const requestOptions = {
@@ -44,7 +53,9 @@ const LoginForm: React.FC = () => {
                 setUserId(userId);
                 localStorage.setItem('userName', JSON.stringify(userName));
                 setUserName(userName);
-                navigate('/', { replace: true });
+                setTimeout(() => {
+                    navigate('/', { replace: true });
+                }, 2000);
             }
             if (response.status === 400 ||
                 response.status === 401 ||
@@ -122,6 +133,9 @@ const LoginForm: React.FC = () => {
                 <form onSubmit={(evt) => {
                     evt.preventDefault();
                     handleSubmitData();
+                    // setTimeout(() => {
+                    //     navigate('/', { replace: true });
+                    // }, 2000);
                 }}>
                     <label>Correo electrónico</label>
                     <input value={userInputValues.email} onChange={handleChange} 

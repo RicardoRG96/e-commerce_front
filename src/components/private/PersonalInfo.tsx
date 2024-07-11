@@ -4,10 +4,15 @@ import styles from '../../styles/private/PersonalInfo.module.css';
 
 const updateUserDataEndpoint = 'http://localhost:3000/api/myaccount/update-user-info';
 
-const PersonalInfo: React.FC = () => {
+interface Props {
+    userName: string
+    userEmail: string
+}
+
+const PersonalInfo: React.FC<Props> = ({ userName, userEmail }) => {
     const [userInputValues, setUserInputValues] = useState({
-        name: '',
-        email: ''
+        name: userName,
+        email: userEmail
     });
     const [error, setError] = useState(false);
     const [successUpdate, setSuccessUpdate] = useState(false);
@@ -39,11 +44,6 @@ const PersonalInfo: React.FC = () => {
                 setError(false);
                 localStorage.setItem('userName', JSON.stringify(updatedUserName));
                 setUserName(updatedUserName);
-                setUserInputValues({
-                    name: '',
-                    email: ''
-                });
-                console.log(updatedUserName);
             }
             if (response.status === 400 ||
                 response.status === 401 ||

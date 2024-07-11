@@ -142,17 +142,8 @@ const CartProductDetails: React.FC<Props> = ({
         }
     }
 
-    let loadingContent = (
-        <section className={styles.modalOverlay}>
-            <div className={styles.modalContainer}>
-                <span>Debes iniciar sesión para acceder a esta página</span>
-            </div>
-        </section>
-    )
-
     return (
         <>  
-            {isLoading && loadingContent}
             <article className={styles.container}>
                 <div className={styles.productNameContainer}>
                     <span className={styles.productName}>{productName}</span>

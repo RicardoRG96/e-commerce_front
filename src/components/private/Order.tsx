@@ -2,7 +2,13 @@ import styles from '../../styles/private/Order.module.css';
 import IMAGES from '../../images/images';
 import { Link } from 'react-router-dom';
 
-const Order: React.FC = () => {
+interface Props {
+    orderId: number
+    orderStatus: string
+    orderDate: string
+}
+
+const Order: React.FC<Props> = ({ orderId, orderStatus, orderDate }) => {
     return (
         <section className={styles.section}>
             <div className={styles.dateContainer}>
