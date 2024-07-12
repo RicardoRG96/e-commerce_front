@@ -11,13 +11,17 @@ import useFetchPrivatePages from "../../hooks/useFetchPrivatePages";
 const OrdersLayout: React.FC = () => {
     const [orders, setOrders] = useState<OrdersHistoryApiResponse>([]);
     const [error, setError] = useState(false);
-    const { userId, token } = useContext(AuthContext);
+    const { userId, token, setUserId, setToken, setUserName } = useContext(AuthContext);
     const ordersHistoryEndpoint = `http://localhost:3000/api/myaccount/orders/${userId}`;
     const { data, err, deniedAccess } = useFetchPrivatePages(ordersHistoryEndpoint, token);
 
     useEffect(() => {
         if (data) {
-            setOrders(data);
+            const uniqueOrders = (data as OrdersHistoryApiResponse).filter((order, i, self) => {
+                return i === self.findIndex((t) => t.order_id === order.order_id)
+            })
+            console.log(uniqueOrders);
+            setOrders(uniqueOrders);
         }
     }, [data]);
 
@@ -26,6 +30,17 @@ const OrdersLayout: React.FC = () => {
             setError(true);
         }
     }, [err]);
+
+    useEffect(() => {
+        if (deniedAccess) {
+            localStorage.setItem('userName', 'Inicia sesión o regístrate');
+            setUserName('Inicia sesión o regístrate');
+            localStorage.removeItem('token');
+            setToken(null);
+            localStorage.removeItem('userId');
+            setUserId(null);
+        }
+    }, [deniedAccess]);
 
     let errorModalContent = (
         <section className={styles.modalOverlay}>
@@ -92,14 +107,18 @@ const OrdersLayout: React.FC = () => {
                 <>
                     <OrdersHeader />
                     <SearchOrder />
-                    {orders.map(order => 
-                        <Order 
-                            key={order.id}
-                            orderId={order.id} 
-                            orderStatus={order.status}
-                            orderDate={order.created_at}
-                        />
-                    )}
+                    <section className={styles.ordersContainer}>
+                        {orders.map(order => 
+                            <Order 
+                                key={order.order_id}
+                                orderId={order.order_id} 
+                                orderStatus={order.order_status}
+                                orderDate={order.order_date}
+                                orderDeliveryDate={order.order_delivery_date}
+                                productImageSrc={order.product_image_src}
+                            />
+                        )}
+                    </section>
                 </>
             }
         </main>

@@ -52,12 +52,29 @@ export type UserDataApiResponse = Array<{
 }>
 
 export type OrdersHistoryApiResponse = Array<{
-    id: number
+    order_id: number
     user_id: number
     total: number
-    status: string
-    created_at: string
-    delivery_date: string
+    order_status: string
+    order_date: string
+    order_delivery_date: string
+    delivery_date: string | null
+    product_id: number
+    product_image_src: string
+}>
+
+export type OrderDetailsApiResponse = Array<{
+    user_id: number
+    order_id: number
+    product_id: number
+    product_name: string
+    product_price: number
+    product_description: string
+    quantity: number
+    order_status: string
+    order_delivery_date: string
+    order_date: string
+    product_image_src: string
 }>
 
 type UserInfoContext = {

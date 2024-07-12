@@ -2,7 +2,14 @@
     display: grid;
     grid-template-columns: 90px auto 90px;
     grid-template-rows: 20px 90px 90px 290px auto;
-    gap: 15px;
+    gap: 10px;
+}
+
+.ordersContainer {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 6;
 }
 
 .modalOverlay {

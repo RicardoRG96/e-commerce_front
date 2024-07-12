@@ -30,7 +30,7 @@ function App() {
         <Route path="/myaccount" element={<MyAccount />} />
         <Route path="/myaccount/account-settings" element={<AccountSettings />} />
         <Route path="/myaccount/orders" element={<OrdersLayout />} />
-        <Route path="/myaccount/orders/details" element={<OrderDetailsLayout />} />
+        <Route path="/myaccount/orders/:orderId" element={<OrderDetailsLayout />} />
       </Routes>
       <Footer />
     </AuthProvider>

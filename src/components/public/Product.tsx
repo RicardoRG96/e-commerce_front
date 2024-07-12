@@ -24,17 +24,4 @@ const Product: React.FC<Props> = ({ id, brand, productName, price, src }) => {
     )
 }
 
-// <section className={styles.section}>
-        //     {products.map(product => 
-        //         <Link to={'/product'} className={styles.link} >
-        //             <div className={styles.productContainer}>
-        //                 <img src={product.src} alt="product-image" />
-        //                 <span className={styles.brand}>{product.brand}</span>
-        //                 <span>{product.productName}</span>
-        //                 <span className={styles.price}>{product.price}</span>
-        //             </div>
-        //         </Link>
-        //     )}
-        // </section>
-
 export default Product;

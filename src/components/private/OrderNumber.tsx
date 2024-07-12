@@ -1,12 +1,16 @@
 import styles from '../../styles/private/OrderNumber.module.css';
 
-const OrderNumber: React.FC = () => {
+interface Props {
+    orderNumber: number
+}
+
+const OrderNumber: React.FC<Props> = ({ orderNumber }) => {
     return (
-        <section className={styles.section}>
-            <span>
-                Pedido N° 1204081991
+        <>
+            <span className={styles.span}>
+                {`Pedido N° ${orderNumber}`}
             </span>
-        </section>
+        </>
     )
 }
 

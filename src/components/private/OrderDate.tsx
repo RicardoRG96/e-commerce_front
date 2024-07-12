@@ -1,12 +1,17 @@
 import styles from '../../styles/private/OrderDate.module.css';
+import { formatDates } from '../../utils';
 
-const OrderDate: React.FC = () => {
+interface Props {
+    orderDate: string
+}
+
+const OrderDate: React.FC<Props> = ({ orderDate }) => {
     return (
-        <section className={styles.section}>
-            <span>
-                Fecha de la compra: 5 de julio 
+        <>
+            <span className={styles.span}>
+                {`Fecha de la compra: ${formatDates(orderDate)}`} 
             </span>
-        </section>
+        </>        
     )
 }
 

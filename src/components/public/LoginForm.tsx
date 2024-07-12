@@ -24,15 +24,6 @@ const LoginForm: React.FC = () => {
         });
     }
 
-    const handleNavigation = () => {
-        if (!error) {
-            setTimeout(() => {
-                navigate('/', { replace: true });
-            });
-        }
-
-    }
-
     const handleSubmitData = async () => {
         try {
             const requestOptions = {
@@ -55,7 +46,7 @@ const LoginForm: React.FC = () => {
                 setUserName(userName);
                 setTimeout(() => {
                     navigate('/', { replace: true });
-                }, 2000);
+                }, 1500);
             }
             if (response.status === 400 ||
                 response.status === 401 ||
@@ -90,19 +81,6 @@ const LoginForm: React.FC = () => {
                 <div className={styles.messageContainer}>
                     <span>Has iniciado sesión correctamente ¡ya puedes comenzar a comprar productos!</span>
                 </div>
-                <div className={styles.btnsContainer}>
-                    <div className={styles.goToLoginBtnContainer}>
-                        <Link to={'/products'}>
-                            <button 
-                                onClick={() => {
-                                    handleSuccessfulMessage(false);
-                                }}
-                            >
-                                Ir a ver productos
-                            </button>
-                        </Link>
-                    </div>
-                </div>
             </div>
         </section>
     );
@@ -133,9 +111,6 @@ const LoginForm: React.FC = () => {
                 <form onSubmit={(evt) => {
                     evt.preventDefault();
                     handleSubmitData();
-                    // setTimeout(() => {
-                    //     navigate('/', { replace: true });
-                    // }, 2000);
                 }}>
                     <label>Correo electrónico</label>
                     <input value={userInputValues.email} onChange={handleChange} 

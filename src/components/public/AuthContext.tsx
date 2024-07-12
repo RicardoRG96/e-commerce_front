@@ -18,6 +18,9 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
         setToken(storedToken);
         setUserId(storedUserId);
         setUserName(storedUserName);
+        // localStorage.removeItem('token')
+        // localStorage.removeItem('userId')
+        // localStorage.removeItem('userName')
     }, [])
 
     return (
