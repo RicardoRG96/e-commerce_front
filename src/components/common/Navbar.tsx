@@ -2,12 +2,10 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../public/AuthContext";
 import Logo from "./Logo";
-import ProductsBtn from "./ProductsBtn";
 import SearchBar from "./SearchBar";
 import SessionInfo from "./SessionInfo";
 import CartButton from "./CartButton";
 import styles from '../../styles/common/Navbar.module.css';
-import ProductsCategory from "../public/ProductsCategory";
 
 const Navbar: React.FC = () => {
     const { userName } = useContext(AuthContext);
@@ -16,12 +14,9 @@ const Navbar: React.FC = () => {
         <nav className={styles.nav}>
             <Link to={'/'}> 
                 <Logo />
-            </Link>
-            <Link to={'/products'} className={styles.link}>
-                <ProductsBtn />
             </Link> 
             <Link to={'/categories'} className={styles.link}>
-                <button>Categories</button>
+                <button>Categorías</button>
             </Link>
             <SearchBar />
             <Link to={userName !== 'Inicia sesión o regístrate' ? '/myaccount' : '/login'}>

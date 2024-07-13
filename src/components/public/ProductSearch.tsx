@@ -1,20 +1,23 @@
-import { useEffect, useState, useContext } from 'react';
-import { AuthContext } from './AuthContext';
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { SearchProductContext } from "./ProductSearchContext";
 import { type ProductsApiResponse } from "../../types";
-import styles from '../../styles/public/Products.module.css';
-import FiltersTable from './FiltersTable';
-import OrderByBtn from './OrderByBtn';
-import Product from './Product';
 import useFetch from "../../hooks/useFetch";
-import { useParams } from 'react-router-dom';
+import FiltersTable from "./FiltersTable";
+import OrderByBtn from "./OrderByBtn";
+import Product from "./Product";
+import styles from '../../styles/public/ProductSearch.module.css';
 
-const Products: React.FC = () => {
+const ProductSearch: React.FC = () => {
     const [products, setProducts] = useState<ProductsApiResponse>([]);
     const [error, setError] = useState<boolean>(false);
-    const { productCategory } = useParams();
-    const productsDataEndpoint = `http://localhost:3000/api/products/${productCategory}`;
-    const { data, err } = useFetch(productsDataEndpoint);
-    // const { userId, userName, token } = useContext(AuthContext);    
+    const navigate = useNavigate();
+    const { currentSearchedProduct } = useContext(SearchProductContext);
+    const params = new URLSearchParams({
+        name: currentSearchedProduct
+    });
+    const searchProductEndpoint = `http://localhost:3000/api/products/search?${params}`;
+    const { data, err, statusCodeResponse } = useFetch(searchProductEndpoint);
 
     useEffect(() => {
         if (data) {
@@ -26,7 +29,24 @@ const Products: React.FC = () => {
         if (err) {
             setError(true);
         }
-    });    
+    });   
+    
+    let noMatchProductsContent = (
+        <section className={styles.modalOverlay}>
+            <div className={styles.modalContainer}>
+                <div className={styles.closeBtnContainer}>
+                    <button 
+                        onClick={() => {
+                            navigate('/');
+                        }}
+                    >
+                        x
+                    </button>
+                </div>
+                <span>Lo sentimos, no encontramos coincidencias en tu búsqueda</span>
+            </div>
+        </section>
+    )
 
     let errorModalContent = (
         <section className={styles.modalOverlay}>
@@ -53,11 +73,10 @@ const Products: React.FC = () => {
         </section>
     )
 
-    // console.log(userName, localStorage.getItem('userName'));
-    // console.log(products)
     return (
         <main className={styles.main}>
             {error && errorModalContent}
+            {statusCodeResponse === 404 && noMatchProductsContent}
             <FiltersTable />
             <OrderByBtn />
             {!products.length ? loadingContent :
@@ -78,4 +97,4 @@ const Products: React.FC = () => {
     )
 }
 
-export default Products;
+export default ProductSearch;

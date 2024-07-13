@@ -18,6 +18,7 @@ const ProductLayout: React.FC = () => {
     useEffect(() => {
         if (data) {
             setProducts(data);
+            console.log(data)
         }
     }, [data]);
 
@@ -26,6 +27,8 @@ const ProductLayout: React.FC = () => {
             setError(true);
         }
     });
+
+    console.log(products);
 
     const currentProduct = products.find(product => product.id.toString() === productId);
 

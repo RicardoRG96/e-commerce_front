@@ -11,9 +11,8 @@ interface Props {
 }
 
 const Product: React.FC<Props> = ({ id, brand, productName, price, src }) => {
-
     return (
-        <Link to={`/products/${id}`} className={styles.link} >
+        <Link to={`/products/product/${id}`} className={styles.link} >
             <div className={styles.productContainer}>
                 <img src={IMAGES[src as keyof typeof IMAGES]} alt="product-image" />
                 <span className={styles.brand}>{brand}</span>

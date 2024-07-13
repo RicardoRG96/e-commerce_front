@@ -12,6 +12,12 @@ const ProductsCategory: React.FC = () => {
     const [error, setError] = useState(false);
     const { productCategory } = useParams();
     const { data, err } = useFetch(categoriesEndpoint);
+    const productsCategoriesDictionary = {
+        Ropa: 'clothes',
+        Tecnología: 'technology',
+        Electrodomésticos: 'home appliances',
+        Deportes: 'sports' 
+    }
 
     useEffect(() => {
         if (data) {
@@ -56,7 +62,11 @@ const ProductsCategory: React.FC = () => {
             {error && errorModalContent}
             <section className={styles.section}>
                 {categories.map(category =>
-                    <Link to={`/products/${productCategory}`} className={styles.link} key={category.id}>
+                    <Link
+                        key={category.id} 
+                        to={`/products/categories/${productsCategoriesDictionary[category.category as keyof typeof productsCategoriesDictionary]}`} 
+                        className={styles.link}
+                    >
                         <article className={styles.categoryContainer}>
                             <div className={styles.imageContainer}>
                                 <img src={IMAGES[category.category_image_src as keyof typeof IMAGES]} alt="product-category-image" />
