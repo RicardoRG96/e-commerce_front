@@ -13,9 +13,8 @@ import AccountSettings from "./components/private/AccountSettings";
 import OrdersLayout from "./components/private/OrdersLayout";
 import OrderDetailsLayout from "./components/private/OrderDetailsLayout";
 import { AuthProvider } from "./components/public/AuthContext";
+import ProductsCategory from "./components/public/ProductsCategory";
 
-
-//añadir rutas de admin
 function App() {
   return (
     <AuthProvider>
@@ -24,7 +23,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/categories" element={<ProductsCategory />} />
+        <Route path="/products/:productCategory" element={<Products />} />
         <Route path="/products/:productId" element={<ProductLayout />} />
         <Route path="/cart" element={<CartLayout />} />
         <Route path="/myaccount" element={<MyAccount />} />

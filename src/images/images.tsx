@@ -29,6 +29,10 @@ const IMAGES = {
     sonyEarphones: new URL('./Sony-WH1000XM4.png', import.meta.url).href,
     adidasSneakers: new URL('./zapatillasAdidas.png', import.meta.url).href,
     nikeSneakers: new URL('./zapatillasNike.png', import.meta.url).href,
+    clothesCategory: new URL('./clothes.jpg', import.meta.url).href,
+    sportsCategory: new URL('./sports.jpg', import.meta.url).href,
+    technologyCategory: new URL('./technology.jpg', import.meta.url).href,
+    homeAppliancesCategory: new URL('./home-appliances.jpg', import.meta.url).href
 }
 
 export default IMAGES;

@@ -77,6 +77,12 @@ export type OrderDetailsApiResponse = Array<{
     product_image_src: string
 }>
 
+export type CategoriesApiResponse = Array<{
+    id: number
+    category: string
+    category_image_src: string
+}>
+
 type UserInfoContext = {
     token: string
     setToken: React.Dispatch<React.SetStateAction<string>>
