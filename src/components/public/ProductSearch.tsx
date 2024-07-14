@@ -77,7 +77,7 @@ const ProductSearch: React.FC = () => {
         <main className={styles.main}>
             {error && errorModalContent}
             {statusCodeResponse === 404 && noMatchProductsContent}
-            <FiltersTable />
+            <FiltersTable products={products} />
             <OrderByBtn />
             {!products.length ? loadingContent :
                 <section className={styles.section}>

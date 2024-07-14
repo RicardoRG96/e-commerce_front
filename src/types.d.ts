@@ -83,6 +83,12 @@ export type CategoriesApiResponse = Array<{
     category_image_src: string
 }>
 
+export interface FiltersState {
+    brand: Array<string>
+    category: string
+    priceRange: string
+}
+
 type UserInfoContext = {
     token: string
     setToken: React.Dispatch<React.SetStateAction<string>>

@@ -45,8 +45,6 @@ const SearchedOrder: React.FC = () => {
         }
     }, [deniedAccess]);
 
-    console.log(orders)
-
     let errorModalContent = (
         <section className={styles.modalOverlay}>
             <div className={styles.modalContainer}>

@@ -1,7 +1,5 @@
 import { useState } from "react";
-// import Navbar from "./Navbar";
 import Hero from "./Hero";
-// import Footer from "./Footer";
 import CoverProduct from "./CoverProduct";
 import CardProduct from "./CardProduct";
 import styles from '../../styles/common/Home.module.css';

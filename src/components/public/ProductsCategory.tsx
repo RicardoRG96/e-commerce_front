@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import { type CategoriesApiResponse } from "../../types";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from '../../styles/public/ProductsCategory.module.css';
 import IMAGES from "../../images/images";
 
@@ -10,7 +10,6 @@ const categoriesEndpoint = 'http://localhost:3000/api/products/categories';
 const ProductsCategory: React.FC = () => {
     const [categories, setCategories] = useState<CategoriesApiResponse>([]);
     const [error, setError] = useState(false);
-    const { productCategory } = useParams();
     const { data, err } = useFetch(categoriesEndpoint);
     const productsCategoriesDictionary = {
         Ropa: 'clothes',
