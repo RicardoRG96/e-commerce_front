@@ -16,6 +16,7 @@ import { AuthProvider } from "./components/public/AuthContext";
 import ProductsCategory from "./components/public/ProductsCategory";
 import { SearchedProductProvider } from "./components/public/ProductSearchContext";
 import ProductSearch from "./components/public/ProductSearch";
+import SearchedOrder from "./components/private/SearchedOrder";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/myaccount" element={<MyAccount />} />
           <Route path="/myaccount/account-settings" element={<AccountSettings />} />
           <Route path="/myaccount/orders" element={<OrdersLayout />} />
+          <Route path="/myaccount/orders/search/:orderId" element={<SearchedOrder />} />
           <Route path="/myaccount/orders/:orderId" element={<OrderDetailsLayout />} />
         </Routes>
         <Footer />

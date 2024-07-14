@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../public/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { type OrdersHistoryApiResponse } from "../../types";
 import Order from "./Order";
 import OrdersHeader from "./OrdersHeader";
@@ -8,11 +8,15 @@ import SearchOrder from "./SearchOrder";
 import styles from '../../styles/private/OrdersLayout.module.css';
 import useFetchPrivatePages from "../../hooks/useFetchPrivatePages";
 
-const OrdersLayout: React.FC = () => {
+const SearchedOrder: React.FC = () => {
     const [orders, setOrders] = useState<OrdersHistoryApiResponse>([]);
     const [error, setError] = useState(false);
+    const { orderId } = useParams();
     const { userId, token, setUserId, setToken, setUserName } = useContext(AuthContext);
-    const ordersHistoryEndpoint = `http://localhost:3000/api/myaccount/orders/${userId}`;
+    const params = new URLSearchParams({
+        userId: userId 
+    })
+    const ordersHistoryEndpoint = `http://localhost:3000/api/myaccount/orders/search/${orderId}?${params}`;
     const { data, err, deniedAccess } = useFetchPrivatePages(ordersHistoryEndpoint, token);
 
     useEffect(() => {
@@ -40,6 +44,8 @@ const OrdersLayout: React.FC = () => {
             setUserId(null);
         }
     }, [deniedAccess]);
+
+    console.log(orders)
 
     let errorModalContent = (
         <section className={styles.modalOverlay}>
@@ -124,4 +130,4 @@ const OrdersLayout: React.FC = () => {
     )
 }
 
-export default OrdersLayout;
+export default SearchedOrder;

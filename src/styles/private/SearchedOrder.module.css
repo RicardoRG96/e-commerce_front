@@ -1,60 +1,15 @@
-.section {
-    padding-left: 20px;
-    display: flex;
-    align-items: center;
+.main {
+    display: grid;
+    grid-template-columns: 90px auto 90px;
+    grid-template-rows: 20px 90px 90px 290px auto;
+    gap: 10px;
+}
+
+.ordersContainer {
     grid-column-start: 2;
     grid-column-end: 3;
-    grid-row-start: 3;
-    grid-row-end: 4;
-    border-radius: 0.7em;
-    background-color: #fff
-}
-
-.section form {
-    width: 380px;
-    height: 40px;
-    display: flex;
-    border-radius: 0.3em;
-    border: 1px solid #afafaf;
-}
-
-.section form input {
-    width: 86%;
-    padding-left: 9px;
-    font-family: system-ui;
-    font-size: 18px;
-    color: #4b4b4b;
-    border-radius: 0.3em;
-    border: none;
-    outline: none;
-}
-
-.section form input::placeholder {
-    font-family: system-ui;
-    font-size: 17px;
-    color: #afafaf;
-}
-
-.section form button {
-    width: 12.1%;
-    font-size: 20px;
-    font-weight: 100;
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #808080;
-}
-
-input[type=number]{
-    appearance: none;
-    -moz-appearance: textfield;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+    grid-row-start: 4;
+    grid-row-end: 6;
 }
 
 .modalOverlay {
