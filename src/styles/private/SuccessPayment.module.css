@@ -1,0 +1,62 @@
+.main {
+    display: grid;
+    grid-template-columns: 300px auto 300px;
+    grid-template-rows: 60px auto 150px;
+}
+
+.section {
+    height: 400px;
+    width: 900px;
+    padding: 10px;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    border-radius: 0.8em;
+    background-color: #fff;
+}
+
+.exitBtnContainer {
+    height: 30px;
+    display: flex;
+    justify-content: right;
+}
+
+.exitBtnContainer button {
+    height: 100%;
+    width: 40px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.messageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 320px;
+    font-family: system-ui;
+    font-size: 50px;
+    font-weight: 300;
+}
+
+.redirectsBtnsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.redirectsBtnsContainer button {
+    height: 37px;
+    width: 200px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}  
+
+.redirectsBtnsContainer span {
+    font-family: system-ui;
+    font-size: 18px;
+    font-weight: 200;
+    text-decoration: underline;
+}

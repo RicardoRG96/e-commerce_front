@@ -19,6 +19,7 @@ import ProductSearch from "./components/public/ProductSearch";
 import SearchedOrder from "./components/private/SearchedOrder";
 import { FilterProductsProvider } from "./components/public/FilterProductsContext";
 import FilterProducts from "./components/public/FilterProducts";
+import SuccessPayment from "./components/private/SuccessPayment";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/myaccount/orders" element={<OrdersLayout />} />
             <Route path="/myaccount/orders/search/:orderId" element={<SearchedOrder />} />
             <Route path="/myaccount/orders/:orderId" element={<OrderDetailsLayout />} />
+            <Route path="/success-payment" element={<SuccessPayment />} />
           </Routes>
           <Footer />
         </FilterProductsProvider>

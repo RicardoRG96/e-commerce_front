@@ -77,21 +77,23 @@ const ProductSearch: React.FC = () => {
         <main className={styles.main}>
             {error && errorModalContent}
             {statusCodeResponse === 404 && noMatchProductsContent}
-            <FiltersTable products={products} />
-            <OrderByBtn />
             {!products.length ? loadingContent :
-                <section className={styles.section}>
-                    {products.map(product => 
-                        <Product 
-                            key={product.id}
-                            id={product.id}
-                            brand={product.brand}
-                            productName={product.name}
-                            price={product.price}
-                            src={product.image_src} 
-                        />
-                    )}
-                </section>
+                <>
+                    <FiltersTable products={products} />
+                    {/* <OrderByBtn /> */}
+                    <section className={styles.section}>
+                        {products.map(product => 
+                            <Product 
+                                key={product.id}
+                                id={product.id}
+                                brand={product.brand}
+                                productName={product.name}
+                                price={product.price}
+                                src={product.image_src} 
+                            />
+                        )}
+                    </section>
+                </>
             }
         </main>
     )

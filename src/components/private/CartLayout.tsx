@@ -183,7 +183,7 @@ const CartLayout: React.FC = () => {
                         )}
                     </section>
                     <section className={styles.paymentcontainer}>
-                        <PaymentDetails totalPrice={purchaseTotalPrice} />
+                        <PaymentDetails totalPrice={purchaseTotalPrice} products={cartProducts} />
                         <PaymentOptions />
                     </section>
                 </>
