@@ -1,5 +1,3 @@
-// import { type ListOfCovers } from "../../types";
-// import IMAGES from "../../images/images";
 import styles from '../../styles/common/CoverProduct.module.css';
 
 interface CoverProps {

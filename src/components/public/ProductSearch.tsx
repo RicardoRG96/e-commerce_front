@@ -4,7 +4,6 @@ import { SearchProductContext } from "./ProductSearchContext";
 import { type ProductsApiResponse } from "../../types";
 import useFetch from "../../hooks/useFetch";
 import FiltersTable from "./FiltersTable";
-import OrderByBtn from "./OrderByBtn";
 import Product from "./Product";
 import styles from '../../styles/public/ProductSearch.module.css';
 

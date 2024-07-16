@@ -11,7 +11,8 @@ export const FilterProductsProvider: React.FC<Props> = ({ children }) => {
     const [currentFilters, setCurrentFilters] = useState<FiltersState>({
         brand: [],
         category: '',
-        priceRange: ''
+        priceRange: '',
+        globalCategory: ''
     });
 
     return (

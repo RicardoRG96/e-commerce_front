@@ -23,7 +23,6 @@ const OrderDetailsLayout: React.FC = () => {
     useEffect(() => {
         if (data) {
             setOrderDetails(data);
-            console.log(data);
         }
     });
 

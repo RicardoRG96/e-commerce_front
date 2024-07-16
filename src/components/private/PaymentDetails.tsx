@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../public/AuthContext';
 import { type CartProductsApiResponse } from '../../types';
 import styles from '../../styles/private/PaymentDetails.module.css';

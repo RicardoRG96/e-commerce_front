@@ -1,4 +1,7 @@
 import { Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./components/public/AuthContext";
+import { SearchedProductProvider } from "./components/public/ProductSearchContext";
+import { FilterProductsProvider } from "./components/public/FilterProductsContext";
 import Home from "./components/common/Home";
 import LoginForm from "./components/public/LoginForm";
 import Navbar from "./components/common/Navbar";
@@ -7,19 +10,16 @@ import RegisterForm from "./components/public/RegisterForm";
 import Products from "./components/public/Products";
 import ProductLayout from "./components/public/ProductLayout";
 import CartLayout from "./components/private/CartLayout";
-import './styles/global.css';
 import MyAccount from "./components/private/MyAccount";
 import AccountSettings from "./components/private/AccountSettings";
 import OrdersLayout from "./components/private/OrdersLayout";
 import OrderDetailsLayout from "./components/private/OrderDetailsLayout";
-import { AuthProvider } from "./components/public/AuthContext";
 import ProductsCategory from "./components/public/ProductsCategory";
-import { SearchedProductProvider } from "./components/public/ProductSearchContext";
 import ProductSearch from "./components/public/ProductSearch";
 import SearchedOrder from "./components/private/SearchedOrder";
-import { FilterProductsProvider } from "./components/public/FilterProductsContext";
 import FilterProducts from "./components/public/FilterProducts";
 import SuccessPayment from "./components/private/SuccessPayment";
+import './styles/global.css';
 
 function App() {
   return (

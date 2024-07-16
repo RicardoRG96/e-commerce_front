@@ -1,5 +1,4 @@
 import AsideMenu from "./AsideMenu";
-// import PersonalInfo from "./PersonalInfo";
 import WelcomeBox from "./WelcomeBox";
 import styles from '../../styles/private/MyAccountLayout.module.css';
 import { ReactNode } from "react";

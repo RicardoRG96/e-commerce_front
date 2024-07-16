@@ -1,9 +1,7 @@
-import { useEffect, useState, useContext } from 'react';
-import { AuthContext } from './AuthContext';
+import { useEffect, useState } from 'react';
 import { type ProductsApiResponse } from "../../types";
 import styles from '../../styles/public/Products.module.css';
 import FiltersTable from './FiltersTable';
-import OrderByBtn from './OrderByBtn';
 import Product from './Product';
 import useFetch from "../../hooks/useFetch";
 import { useParams } from 'react-router-dom';
@@ -13,8 +11,7 @@ const Products: React.FC = () => {
     const [error, setError] = useState<boolean>(false);
     const { productCategory } = useParams();
     const productsDataEndpoint = `http://localhost:3000/api/products/${productCategory}`;
-    const { data, err } = useFetch(productsDataEndpoint);
-    // const { userId, userName, token } = useContext(AuthContext);    
+    const { data, err } = useFetch(productsDataEndpoint);  
 
     useEffect(() => {
         if (data) {
@@ -53,8 +50,6 @@ const Products: React.FC = () => {
         </section>
     )
 
-    // console.log(userName, localStorage.getItem('userName'));
-    // console.log(products)
     return (
         <main className={styles.main}>
             {error && errorModalContent}

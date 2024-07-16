@@ -9,11 +9,6 @@ interface Props {
 export const SearchedProductProvider: React.FC<Props> = ({ children }) => {
     const [currentSearchedProduct, setCurrentSearchedProduct] = useState('');
 
-    // useEffect(() => {
-    //     setCurrentSearchedProduct(storedToken);
-
-    // }, [])
-
     return (
         <SearchProductContext.Provider value={{ currentSearchedProduct, setCurrentSearchedProduct }}>
             {children}

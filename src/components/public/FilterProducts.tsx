@@ -1,17 +1,14 @@
 import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { FilterProductsContext } from "./FilterProductsContext";
 import { type ProductsApiResponse } from "../../types";
 import useFetch from "../../hooks/useFetch";
 import FiltersTable from "./FiltersTable";
-import OrderByBtn from "./OrderByBtn";
 import Product from "./Product";
 import styles from '../../styles/public/ProductSearch.module.css';
 
 const FilterProducts: React.FC = () => {
     const [products, setProducts] = useState<ProductsApiResponse>([]);
     const [error, setError] = useState<boolean>(false);
-    const navigate = useNavigate();
     const { currentFilters } = useContext(FilterProductsContext);
 
     const formatBrandFilter = () => {
@@ -34,7 +31,8 @@ const FilterProducts: React.FC = () => {
         minPrice: formatMinPriceFilter(),
         maxPrice: formatMaxPriceFilter(),
         category: currentFilters.category,
-        brand: formatBrandFilter()
+        brand: formatBrandFilter(),
+        globalCategory: currentFilters.globalCategory 
     });
     const searchProductEndpoint = `http://localhost:3000/api/products/filters?${params}`;
     const { data, err } = useFetch(searchProductEndpoint);

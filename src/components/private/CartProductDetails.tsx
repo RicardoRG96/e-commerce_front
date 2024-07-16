@@ -41,7 +41,6 @@ const CartProductDetails: React.FC<Props> = ({
 }) => {
 
     const [cartProductQuantity, setCartProductQuantity] = useState(productQuantity);
-    const [isLoading, setIsLoading] = useState(true);
     const { token } = useContext(AuthContext);
 
     const handleRenderProducts = (): void => {
@@ -65,7 +64,6 @@ const CartProductDetails: React.FC<Props> = ({
                 handleError(false);
                 setCartProductQuantity(cartProductQuantity + 1);
                 handleTotalPrice(totalPrice += parseFloat(productPrice.toString()));
-                setIsLoading(false);
             }
             if (response.status === 400 || 
                 response.status === 500 || 
@@ -96,7 +94,6 @@ const CartProductDetails: React.FC<Props> = ({
                 handleError(false);
                 setCartProductQuantity(cartProductQuantity - 1);
                 handleTotalPrice(totalPrice -= productPrice);
-                setIsLoading(false);
             }
             if (response.status === 400 || 
                 response.status === 500 || 
@@ -159,7 +156,6 @@ const CartProductDetails: React.FC<Props> = ({
                             <div className={styles.btnContainer}>
                                 <button
                                     onClick={() => {
-                                        setIsLoading(true);
                                         cartProductQuantity > 1
                                             ? handleDecreaseProductQuantity()
                                             : handleRemoveProduct()
@@ -172,7 +168,6 @@ const CartProductDetails: React.FC<Props> = ({
                             <div className={styles.btnContainer}>
                                 <button
                                     onClick={() => {
-                                        setIsLoading(true);
                                         handleIncreaseProductQuantity()
                                     }}
                                 >

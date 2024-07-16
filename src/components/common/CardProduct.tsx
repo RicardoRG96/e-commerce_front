@@ -6,7 +6,7 @@ interface Props {
     products: ListOfProducts
 }
 
-const CardProduct: React.FC<Props> = ({ products }) => { //acepta props para ser rectangular o cuadrada
+const CardProduct: React.FC<Props> = ({ products }) => {
     return (
         <>
             {products.map((product, i) => 

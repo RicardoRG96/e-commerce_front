@@ -12,7 +12,8 @@ const FiltersTable: React.FC<Props> = ({ products }) => {
     const [currentFiltersApplied, setCurrentFiltersApplied] = useState<FiltersState>({
         brand: [],
         category: '',
-        priceRange: ''
+        priceRange: '',
+        globalCategory: products[0].category
     });
     const navigate = useNavigate();
     const { setCurrentFilters } = useContext(FilterProductsContext);
@@ -84,8 +85,6 @@ const FiltersTable: React.FC<Props> = ({ products }) => {
             priceRange: currentFiltersApplied.priceRange === evt.target.value ? '' : evt.target.value
         });
     }
-
-    console.log(currentFiltersApplied)
 
     return (
         <aside className={styles.aside}>

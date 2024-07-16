@@ -87,6 +87,7 @@ export interface FiltersState {
     brand: Array<string>
     category: string
     priceRange: string
+    globalCategory: string
 }
 
 type UserInfoContext = {
